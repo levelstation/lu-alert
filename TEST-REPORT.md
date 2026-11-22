@@ -46,3 +46,11 @@ GO für Simulator und öffentliches Quellcode-Alpha; keine Behauptung einer hard
 Alle bisherigen 167 Pixelreferenzen blieben bytegleich; vier SOUND-ON/OFF-Popup-/Wiederherstellungsframes kamen hinzu. Neue RC3-Hardware und tatsächlicher Summer weiterhin UNTESTED; keine Geräteoperation durch den Agenten.
 
 Am 22.11.2026 hat der Nutzer das Flashen und einwandfreie Funktionieren der zuletzt bereitgestellten LU-Alert-RC2-Version gemeldet. Die individuelle BIN-Prüfsumme wurde nicht unabhängig ausgelesen. Diese Nutzerbestätigung ist kein Test des neuen RC3-Doppelklick-Builds.
+
+## Spätere Web-Ergänzung · 2026-11-22
+
+Die nachstehenden Web-Dateien ergänzen die RC3-Ausgabe. DFU, BIN, UF2 und Mac-Download wurden dafür nicht verändert. Die obigen RC3-Prüfungen beschreiben weiterhin den RC3-Release; Meshis erhält unabhängig davon ein Board-Untermenü in RC4.
+
+## Browser-Simulator
+
+1272 native/WASM-Vergleiche aller Framebufferbytes und Zustände: PASS. Tatsächliche Browserbedienung und Layouts bei 1280/390 Pixeln: PASS. Siehe [Web-Testbericht](docs/simulator/TEST-REPORT.md). Keine Geräteverbindung.

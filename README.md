@@ -52,3 +52,21 @@ Firmware: Python-Umgebung mit PlatformIO 6.1.19 und pyelftools, dann `sh tools/b
 UF2-Family-ID 0xADA52840 ist keine Board-ID. Die individuelle INFO_UF2-Board-ID und installierte SoftDevice-Version wurden nicht ausgelesen. E-Ink und Pro 1W sind nicht unterstützt. Der individuelle OLED-Controller ist nicht anhand einer Panelkennzeichnung nachgewiesen.
 
 [Offizielle Hardwaredokumentation](https://wiki.seeedstudio.com/wio_tracker_l1_node/) · MeshCore MIT, siehe LICENSE und vendor/meshcore/LICENSE · Adafruit GFX BSD, siehe simulator/vendor/adafruit-gfx/license.txt. Unabhängiges Community-Projekt.
+
+## Websimulation
+
+[Im Browser ausprobieren](https://lu-alert.nosrv.eu/simulator/). Die Browser-Version kompiliert denselben C++-Simulator nach WebAssembly: FirmwareScreens, QuickTx, KeyLock, MenuActions, LockRenderer und FramebufferDisplay. JavaScript skaliert ausschließlich den 1024-Byte-Framebuffer und reicht Eingaben weiter. Keine zweite Implementierung der Firmwaremenüs oder Animationen.
+
+Pfeile/Enter/Escape sowie die sichtbaren Joystick-, ENTER-, MENU- und RESET-Tasten bedienen die Simulation. 2× MENU schaltet den simulierten Summerstatus; 3× sperrt/entsperrt. Kein Audio im Browser. Die Ereignisse sind lokale Testdaten, ohne echte Funk-, BLE-, GPS- oder Geräteschnittstelle. RESET erhält die Einstellungen dieser Sitzung; Neuladen startet eine neue Sitzung. Pause friert auch die Simulationszeit und Gestenerkennung ein.
+
+Mit einem aktivierten offiziellen Emscripten-SDK **7.0.1**, Python 3 und Node.js:
+
+```sh
+sh tools/build_web_simulator.sh
+sh tools/test_web_simulator.sh
+python3 -m http.server 4176 --directory docs
+```
+
+Dann `http://localhost:4176/simulator/` öffnen. Für die native Vergleichsreferenz ist ein C++17-Compiler erforderlich. SDK-Installation: im offiziellen emsdk-Checkout `./emsdk install 7.0.1`, `./emsdk activate 7.0.1 --embedded`, dann `source ./emsdk_env.sh`. Kein SDK und keine Zugangsdaten sind im Projekt enthalten. Die Ausgabe ist statisch hostbar. Build- und Quellprüfsummen stehen in `docs/simulator/BUILD-MANIFEST.json`.
+
+1272 native/WASM-Pixelvergleiche bestanden; Details in [Web-Testbericht](docs/simulator/TEST-REPORT.md). Der WebAssembly-Heap ist auf 16 MiB begrenzt; der OLED-Framebuffer bleibt 1024 Byte. Dies ist keine Emulation des nRF52840, Funkchips oder Bootloaders.

@@ -1,5 +1,9 @@
 # LU-Alert Changelog
 
+## Websimulation zur 0.2 RC3 · 2026-11-22
+
+Firmware und native RC3-App bleiben bytegleich erhalten. Bedienbare WebAssembly-Simulation mit gemeinsamem C++-Code, 1272 nativen/WASM-Pixelvergleichen und Browserprüfung. Keine Geräteoperationen.
+
 ## 0.2 RC3 · 2026-11-22
 
 2× MENU: Sound an/aus, 1× MENU: Zurück, 3× MENU: Tastensperre. Doppelklick wird erst nach dem 1200-ms-Fenster ausgeführt; gültiger Dreifachklick verändert den Ton nicht. Gemeinsame Gestenerkennung in Firmware und Simulator, sichtbare SOUND-ON/OFF-Bestätigung und gespeicherter Tonstatus im Mac-Simulator. Keine Kanal- oder Protokolländerungen.
