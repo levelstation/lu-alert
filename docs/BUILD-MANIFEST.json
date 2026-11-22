@@ -1,5 +1,5 @@
 {
-  "version": "0.2 RC2",
+  "version": "0.2 RC3",
   "date": "2026-11-22",
   "profile": "LU-Alert",
   "quick_tx_channels": [
@@ -15,19 +15,25 @@
   "channel_keys_included": false,
   "creates_device_channels": false,
   "board": "Original Wio Tracker L1 Pro OLED",
-  "application_bytes": 421444,
+  "application_bytes": 421524,
   "static_ram_bytes": 151984,
   "upstream_commit": "75b04ef06def54b348400cb1b138afb6749ffd4f",
   "noise_display": "Cached MeshCore estimate only; no sampling or calibration changes.",
   "simulator": "macOS 14+ arm64, ad-hoc signed",
   "hardware_base": "USER_CONFIRMED; previous build unspecified",
-  "new_rc2_hardware": "UNTESTED",
+  "new_rc3_hardware": "UNTESTED",
   "hardware_flashed": false,
   "heltec_4v2": "PLANNED; no build; do not use Wio images",
   "files": {
-    "LU-Alert-0.2-Wio-L1-Pro-DFU.zip": "d2290745341c44501a4fe4dbad2a2b213ff6ed65aeafdb4359ba89f356c58468",
-    "LU-Alert-0.2-Wio-L1-Pro.bin": "9f201f5449504b07d42c726aef429e8c0f9e166be0d5db73dbd9c6cd44174134",
-    "LU-Alert-0.2-Wio-L1-Pro.uf2": "efa962b2c6254f366fadf10426961e64dea11dbccff807037ed5fbc6ded465d8",
-    "LU-Alert-Simulator-macOS-arm64.zip": "5fdef160c643c888f657d5e4e22b456a278d98ea797cbe663568018c4708b509"
-  }
+    "LU-Alert-0.2-Wio-L1-Pro-DFU.zip": "5e879cf754410846827ed8e74ecf713689ca10955e3db3be040438067751b3cd",
+    "LU-Alert-0.2-Wio-L1-Pro.bin": "3bfbb53e6ab6940232fb14ee495030d8ea6c89e7a2bd9ffc09a83fd30ab49302",
+    "LU-Alert-0.2-Wio-L1-Pro.uf2": "24a628dbf0b8e94e5b309ec61ca1daee508cb088e1c29c30ec6d743fb24bca70",
+    "LU-Alert-Simulator-macOS-arm64.zip": "09e38b27fed59d6e0027fc5146e724ccbcdd2e8353c7c0a14122ff66f9ee590d"
+  },
+  "menu_gestures": {
+    "single": "Back",
+    "double": "Toggle sound, resolved after 1200 ms from first press",
+    "triple": "Lock/unlock without sound change"
+  },
+  "previous_lu_alert_rc2_hardware": "USER_CONFIRMED flashed and working; device binary hash not independently read"
 }

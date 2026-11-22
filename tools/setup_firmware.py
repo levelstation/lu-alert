@@ -30,7 +30,7 @@ build_flags = ${env:WioTrackerL1_companion_radio_ble.build_flags}
   -D LU_ALERT_PRESERVE_STORAGE=1
   -D MESHIS_V2=1
   -D LU_ALERT_BRANDING=1
-  -D FIRMWARE_VERSION='"v0.2.0-lu-alert-rc2"'
+  -D FIRMWARE_VERSION='"v0.2.0-lu-alert-rc3"'
   -D FIRMWARE_BUILD_DATE='"22 Nov 2026"'
 '''
 target=upstream/'platformio.local.ini'
