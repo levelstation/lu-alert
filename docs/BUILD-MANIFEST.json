@@ -1,0 +1,33 @@
+{
+  "version": "0.2 RC2",
+  "date": "2026-11-22",
+  "profile": "LU-Alert",
+  "quick_tx_channels": [
+    "#Public",
+    "#Test",
+    "#LU-Alert",
+    "#trafic",
+    "#luxembourg",
+    "#saarloorlux",
+    "#trier",
+    "#bot"
+  ],
+  "channel_keys_included": false,
+  "creates_device_channels": false,
+  "board": "Original Wio Tracker L1 Pro OLED",
+  "application_bytes": 421444,
+  "static_ram_bytes": 151984,
+  "upstream_commit": "75b04ef06def54b348400cb1b138afb6749ffd4f",
+  "noise_display": "Cached MeshCore estimate only; no sampling or calibration changes.",
+  "simulator": "macOS 14+ arm64, ad-hoc signed",
+  "hardware_base": "USER_CONFIRMED; previous build unspecified",
+  "new_rc2_hardware": "UNTESTED",
+  "hardware_flashed": false,
+  "heltec_4v2": "PLANNED; no build; do not use Wio images",
+  "files": {
+    "LU-Alert-0.2-Wio-L1-Pro-DFU.zip": "d2290745341c44501a4fe4dbad2a2b213ff6ed65aeafdb4359ba89f356c58468",
+    "LU-Alert-0.2-Wio-L1-Pro.bin": "9f201f5449504b07d42c726aef429e8c0f9e166be0d5db73dbd9c6cd44174134",
+    "LU-Alert-0.2-Wio-L1-Pro.uf2": "efa962b2c6254f366fadf10426961e64dea11dbccff807037ed5fbc6ded465d8",
+    "LU-Alert-Simulator-macOS-arm64.zip": "5fdef160c643c888f657d5e4e22b456a278d98ea797cbe663568018c4708b509"
+  }
+}

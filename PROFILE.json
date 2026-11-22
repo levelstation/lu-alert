@@ -1,0 +1,16 @@
+{
+  "version": "0.2",
+  "profile": "LU-Alert",
+  "quick_tx_menu_names": [
+    "#Public",
+    "#Test",
+    "#LU-Alert",
+    "#trafic",
+    "#luxembourg",
+    "#saarloorlux",
+    "#trier",
+    "#bot"
+  ],
+  "configuration_included": false,
+  "device_changes": false
+}
