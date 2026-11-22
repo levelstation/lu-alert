@@ -17,7 +17,7 @@ public:
   int pageIndex()const;static int pageCount();static const char* pageName(int index);
   const char* state()const;std::string status()const;unsigned simulatedSends()const;
   void seed();
-  static bool heltecPrg();void prgLevel(bool pressed);void prgCancel();bool prgPressed()const;
+  static bool liveRadio();static bool heltecPrg();void prgLevel(bool pressed);void prgCancel();bool prgPressed()const;
   bool soundEnabled()const;void setSoundEnabled(bool enabled);
   bool locked()const;int lockPhase()const;void menuLevel(bool pressed);
   void receiveSimulated(const char* channel,const char* sender,const char* text,bool authenticated=false,bool expected=false,bool correlated=false);

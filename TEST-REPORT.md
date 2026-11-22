@@ -58,3 +58,7 @@ Die nachstehenden Web-Dateien ergänzen die RC3-Ausgabe. DFU, BIN, UF2 und Mac-D
 ## Heltec V4.3 – Vorschau
 
 [Browser-Eingabetests](docs/simulator/heltec/UI-TEST-RESULT.json) · [Native/WASM-Vergleich](docs/simulator/heltec/TEST-RESULT.json) · [Mac-/Firmware-Testbericht](docs/HELTEC-TEST-REPORT.md). R2/R8-Compileziele, Hardware UNTESTED. Kein Gerät geflasht. Die bisherigen Wio-Referenzen und Downloaddateien wurden erneut unverändert geprüft.
+
+## Gemeinsamer Funkmonitor für Wio und Heltec
+
+[Neue Testergebnisse](docs/RADIO-LIVE-BUILD-MANIFEST.json) · [Protokoll-/Download-Regressionsprüfung](docs/RADIO-LIVE-REGRESSION.json) · [Bedienung](docs/RADIO-LIVE.md). Vollständige Namen, RSSI-Balken und direkte Browser-Einstiege; Wio- und Heltec-Builds PASS, neue Hardwaretests UNTESTED. Kein Gerät geflasht.

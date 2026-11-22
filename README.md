@@ -1,5 +1,7 @@
 # LU-Alert · MeshCore Luxembourg
 
+**Neu: Wio RC4 / Heltec dev2 – Funkmonitor-Vorschau.** [Repeater live direkt öffnen](https://lu-alert.nosrv.eu/simulator/?demo=repeaters) · [Pegel / Rauschen](https://lu-alert.nosrv.eu/simulator/?demo=noise) · [Bedienung](docs/RADIO-LIVE.md).
+
 **Version 0.2 · v0.2.0-lu-alert-rc3 · eigenständige öffentliche Ausgabe.** Klassische OLED-Menüs und animiertes LU-Alert-Logo, ohne Pixelbegleiter oder Board-Charakterauswahl. Eigene Mac-App und eigene DFU-Datei. Keine persönliche Tracker-Konfiguration enthalten.
 
 | Kanalmenü | Vorlagen / Status |
@@ -76,3 +78,7 @@ Dann `http://localhost:4176/simulator/` öffnen. Für die native Vergleichsrefer
 [Bedienbare Browser-Vorschau](https://lu-alert.nosrv.eu/simulator/heltec/) · [Downloads](https://lu-alert.nosrv.eu/#heltec).
 
 Separate PRG-Version für SSD1315, 128×64, R2/R8-Compileziele. [Funktionsumfang und Hardwaregrenzen](docs/HELTEC-V4.3.md) · [Bauen und starten](docs/HELTEC-BUILD.md) · [Tests](docs/HELTEC-TEST-REPORT.md). Hardware UNTESTED; noch kein Flash-Release.
+
+## Funkmonitor für Wio und Heltec
+
+[Wio: Repeater live](https://lu-alert.nosrv.eu/simulator/?demo=repeaters) · [Anleitung und Grenzen](docs/RADIO-LIVE.md). Vollständiger Name, vier Hex-Zeichen, RSSI, Signalbalken und Empfangsalter. Browserdaten sind Demo; Hardware arbeitet passiv mit empfangenen Adverts. Neue Geräteversionen sind Software-Vorschauen, nicht physisch getestet.

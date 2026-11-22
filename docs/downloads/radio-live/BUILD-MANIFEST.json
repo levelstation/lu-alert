@@ -1,0 +1,18 @@
+{
+  "status": "PREVIEW",
+  "version_wio": "RC4",
+  "version_heltec": "dev2",
+  "hardware_tests": "UNTESTED",
+  "hardware_flashed": false,
+  "old_downloads_preserved": true,
+  "files": {
+    "LU-Alert-Heltec-Radio-Live-dev2-macOS-arm64.zip": "b8fe1a0a8fb77f94baa9c08252640a62b94ec91c048a086ea3e4aef40f74e2e9",
+    "LU-Alert-Radio-Live-Source.zip": "c51736cca1dab41848c35ba9029db4886b8ac1b68d917e1ea4595771ab8ab88d",
+    "LU-Alert-Wio-DFU-VALIDATION.json": "e512389881e5b52eb4fcf31766f694475eaef08ba9d6b1cfc69f2484e44cb2a9",
+    "LU-Alert-Wio-MEMORY-LAYOUT.json": "39e48377b67c4c6dcd47053dd3842eda2cedf96631b7e16a381ba25487f8c05d",
+    "LU-Alert-Wio-Radio-Live-RC4-DFU.zip": "e9fabb2ae823f8ee67bd3b5b212edcde82c10136161681a15ae1af441149271d",
+    "LU-Alert-Wio-Radio-Live-RC4-macOS-arm64.zip": "5276320eb58cde3af3beffa18d5e0cfe5d3566a62c06738cf5147ec8e45bd351",
+    "LU-Alert-Wio-Radio-Live-RC4.bin": "fa5d4f784c1657ec98eefccf2b4c5035e5d0c9830f9d6c51b9a47135a184e986",
+    "LU-Alert-Wio-Radio-Live-RC4.uf2": "bfdb1571b998ad19cdd1d7f71d27e1f9f2de3bf0be66ff2a8a8c281569d26841"
+  }
+}

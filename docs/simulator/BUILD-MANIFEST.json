@@ -8,21 +8,25 @@
     1
   ],
   "device_access": false,
+  "live_radio": true,
+  "hardware_tests": "UNTESTED for new Wio build",
   "files": {
-    "core.mjs": "a1c8a10716697615121e855b9a1888f09539c1f74f176759ea43e780f2b90f57",
-    "core.wasm": "a52253ababcd85573754a113c4050d525f5982fda74f60725d6937f25a92f2de"
+    "core.mjs": "eff2abf48c443bfc4a34d9c1520202c52420f8b0e461119b3cc0144f97c7d2f3",
+    "core.wasm": "29d0cd6dfa3c77127e4ff9d99eda6cf9743deca0d7adef6dcf53dab9ad2f828e"
   },
   "shared_sources": {
-    "simulator/web/Bridge.cpp": "06131669b15e856b905fe1d3b219ef9ee53923ce6d24e2eee4cdc5b52f29f8b7",
-    "firmware/ui/TxProfile.h": "ffbde58da80d454bd6b9b2845c7e4e68196d8441b821067115f918b1d2d33fa1",
+    "simulator/web/Bridge.cpp": "3e85d826c8410c2ad3c5367b0a3fabe74c2047c0157aa589a30309ff44d5efbb",
+    "firmware/ui/TxProfile.h": "24ed1bbe268400c6c33a1016f4d810aa1b2700088891485d308abc4dc5bbf223",
     "firmware/ui/MeshiSprites.h": "d16434fc9d62257c8e0b254b9b9768a0434b4fa1853e62818e5eca72bc904abb",
-    "simulator/src/Simulator.cpp": "3dfb8b0cb04a948b8a129c8d627fc6639f8f6439422e87c2821c9fc44359377f",
-    "simulator/src/FirmwareAdapter.h": "df9903d3457225350b29fe4733784c780f5a32b3187eab88fa7e794f56721695",
-    "firmware/ui/FirmwareScreens.h": "e7a01b72e9f7c2c6a23f5f5de6f329b8053a527582b4028d5e823d0629c629b8",
-    "firmware/ui/QuickTx.h": "1bc853ed2bef4b77005f1c3292d20b1fee66e8aa80084f63893119d7efbcf972",
+    "simulator/src/Simulator.cpp": "868279ff522085c9c5dbc381875472c234154e786ce800e3cb3743beb7c97edb",
+    "simulator/src/FirmwareAdapter.h": "73e0ecf04d61bc4be7d6c0495aa305ee15501cb3f16b5d68589ee0f87478eab3",
+    "firmware/ui/FirmwareScreens.h": "9451ccf060ef9d8632b902b28376731023a6ad7fa777cf98c7c6a7d088c053bf",
+    "firmware/ui/QuickTx.h": "0118d65d4599b42ef7ca6e3bf94398ad840fd80833eaa1630ca2df3524026af0",
     "firmware/ui/MenuActions.h": "962e9fa6a4037136f7aa9b8af3917041a4de7c841379c32572c475e5552b480f",
-    "firmware/core/KeyLock.h": "644215ff4753f0d226b839a3bf7e8d68022376d8ec86a7d3b26792222213be62",
-    "firmware/ui/LockRenderer.h": "c25ef81ea69e33c68297db434ac487f43481ffb4bd77996e055ee590e2bd5e91",
+    "firmware/core/RuntimeTelemetry.h": "c090d44294911dbf577995f91ff40623a6a1d2f1b198ae93098dd2255ed89b10",
+    "firmware/ui/OledText.h": "5c0b83fb5aee1075fd4da2dbf47e1af528fad723814ff5207c18138e292d2053",
+    "firmware/core/KeyLock.h": "22ed439e0b8d9152f9c9d0103f6751027119c0354d3475782b297ee18cac4819",
+    "firmware/ui/LockRenderer.h": "67a1e23fb5dcb048b3f29d94d848c1a46540a1645d9673acd64004f5dc2028ea",
     "firmware/display/FramebufferDisplay.h": "30904f4e0cfc9863451f071ca1520e57585ad88fe61f0cb9ab2c6e295b1622a9"
   }
 }

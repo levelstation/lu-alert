@@ -1,14 +1,11 @@
 {
   "date": "2026-11-22",
-  "scope": "public Wio baseline plus separate Heltec V4.3 preview",
-  "hardware_tests": "UNTESTED for Heltec; Wio baseline status retained",
-  "known_personal_marker_count": 0,
-  "devices_accessed": false,
+  "scope": "Wio and Heltec shared passive radio monitor",
+  "known_personal_markers": 0,
+  "old_downloads": "UNCHANGED",
+  "previous_wio_web": "archived with identical WASM",
   "hardware_flashed": false,
-  "wio_downloads": "UNCHANGED",
-  "wio_wasm": "UNCHANGED",
-  "source_sha256sums": "acfb08e34a91fcadee6defffc4c4da1ad1c061a84c75d41062ebe01024d40d59",
-  "heltec_web_wasm": "2f5c6b8285f636ab46d14c42a13b0c05283195c4e043f52db02a6bda10d0300c",
-  "shared_cpp_ui": true,
-  "meshcore_protocol_changed": false
+  "new_hardware_tests": "UNTESTED",
+  "protocol_changed": false,
+  "source_sha256sums": "f6d18bab76790084da469545001f3a8316c992759d1974c2fd9c7832e8a33ce8"
 }
