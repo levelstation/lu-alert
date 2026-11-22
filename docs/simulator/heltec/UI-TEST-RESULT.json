@@ -1,0 +1,9 @@
+{
+  "result": "PASS",
+  "browser_input_assertions": 29,
+  "model": "actual Heltec WebAssembly",
+  "framebuffer_bytes": 1024,
+  "wasm_sha256": "2f5c6b8285f636ab46d14c42a13b0c05283195c4e043f52db02a6bda10d0300c",
+  "hardware": "UNTESTED",
+  "device_access": false
+}

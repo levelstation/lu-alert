@@ -54,3 +54,7 @@ Die nachstehenden Web-Dateien ergänzen die RC3-Ausgabe. DFU, BIN, UF2 und Mac-D
 ## Browser-Simulator
 
 1272 native/WASM-Vergleiche aller Framebufferbytes und Zustände: PASS. Tatsächliche Browserbedienung und Layouts bei 1280/390 Pixeln: PASS. Siehe [Web-Testbericht](docs/simulator/TEST-REPORT.md). Keine Geräteverbindung.
+
+## Heltec V4.3 – Vorschau
+
+[Browser-Eingabetests](docs/simulator/heltec/UI-TEST-RESULT.json) · [Native/WASM-Vergleich](docs/simulator/heltec/TEST-RESULT.json) · [Mac-/Firmware-Testbericht](docs/HELTEC-TEST-REPORT.md). R2/R8-Compileziele, Hardware UNTESTED. Kein Gerät geflasht. Die bisherigen Wio-Referenzen und Downloaddateien wurden erneut unverändert geprüft.

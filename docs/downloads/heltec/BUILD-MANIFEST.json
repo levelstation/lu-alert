@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0-heltec-dev1",
+  "status": "PREVIEW",
+  "hardware": "UNTESTED",
+  "physical_revision": "UNKNOWN",
+  "bootloader_compatibility": "UNKNOWN",
+  "simulator_zip_sha256": "42b2d6a85bb8f358e7fdca6ef8b0417ddebd0f09786179bc7080d499785b659c",
+  "source_zip_sha256": "2778c783bd7b0a3f2949334e2803054e9431902f0e2aeb5b002d2fa2ebe9b5a2",
+  "web_wasm_sha256": "2f5c6b8285f636ab46d14c42a13b0c05283195c4e043f52db02a6bda10d0300c",
+  "app_binary_sha256": "09c41ef9eeb0042daa891c8416a077657c1df98641007c3be3e41adaf9c89866",
+  "hardware_flashed": false
+}

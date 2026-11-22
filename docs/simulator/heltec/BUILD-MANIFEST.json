@@ -1,0 +1,56 @@
+{
+  "version": "0.2.0-heltec-dev1",
+  "status": "PREVIEW",
+  "input": "raw PRG levels; gestures resolved by shared C++ PrgInput",
+  "format": "Shared C++ simulator compiled to WebAssembly",
+  "framebuffer_bytes": 1024,
+  "display": [
+    128,
+    64,
+    1
+  ],
+  "device_access": false,
+  "hardware_tests": "UNTESTED",
+  "physical_revision": "UNKNOWN",
+  "bootloader_compatibility": "UNKNOWN",
+  "files": {
+    "core.mjs": "845dd01e78514504fe1285b789caada40a188587d17a0eaed362b78a5288d257",
+    "core.wasm": "2f5c6b8285f636ab46d14c42a13b0c05283195c4e043f52db02a6bda10d0300c"
+  },
+  "shared_sources": {
+    "firmware/core/GpsCourse.h": "02ec54d8d834f3bd03219692f00a6f81eb17e4f3b6a88ab18de2a8ef0c777142",
+    "firmware/core/KeyLock.h": "22ed439e0b8d9152f9c9d0103f6751027119c0354d3475782b297ee18cac4819",
+    "firmware/core/Meshis.h": "04781a23af72d583752028567c315653cafeffdd77390257c049f09682d41eef",
+    "firmware/core/PrgInput.h": "54fc9d0b3e58c21651237a6a0fdf9a721d9665f9e2e7b3143bbd87bb63990499",
+    "firmware/core/RuntimeTelemetry.h": "9c7bf958272a50222c067b8733e5c478e8e028c8e1a24e69cc33c0bcd02c14b1",
+    "firmware/ui/Branding.h": "80b4a60c1586d28ffc253bfa59c923aef244b67d9331845bf8c961e1ef07bc21",
+    "firmware/ui/FirmwareScreens.h": "1c29227c4556fe436972dca79ad58db24372e6a2ac5a18559e4207ba44db9515",
+    "firmware/ui/LockRenderer.h": "67a1e23fb5dcb048b3f29d94d848c1a46540a1645d9673acd64004f5dc2028ea",
+    "firmware/ui/LuAlert.h": "2382ef8545a67897b0a9983632005c3973237458c7287b961289802c045f088a",
+    "firmware/ui/LuAlertBitmap.h": "70ae98bd6d2d42f21961c1496bf30ffeb9dc10c2da044c254b2d6e99d16cd810",
+    "firmware/ui/MenuActions.h": "962e9fa6a4037136f7aa9b8af3917041a4de7c841379c32572c475e5552b480f",
+    "firmware/ui/MeshCoreMessages.h": "c5d2e5b03c98868ae4874ffdcf6e3f4463aee74cb4c4c7b52157fb9a816ada93",
+    "firmware/ui/MeshiRenderer.h": "fbaf8ca89d030d7596b6f81420b3fc34649c3d3a9e9d68954d6a3fe1e681eae4",
+    "firmware/ui/MeshiSprites.h": "d16434fc9d62257c8e0b254b9b9768a0434b4fa1853e62818e5eca72bc904abb",
+    "firmware/ui/MessagesUi.h": "657e19d908f06e0984bdb7c56b6ea127cda92bde906da32ba454d8fe210b08e5",
+    "firmware/ui/NuxRenderer.h": "0815892b494b3e7295167ee68bedce341194cb1f1b5e319054992bb3f1683892",
+    "firmware/ui/OledText.h": "4ef5cd7ecebd410a71e5f8a14c933e52dc2a93819469bcbabc868f613014d16e",
+    "firmware/ui/QuickTx.h": "0118d65d4599b42ef7ca6e3bf94398ad840fd80833eaa1630ca2df3524026af0",
+    "firmware/ui/TxProfile.h": "24ed1bbe268400c6c33a1016f4d810aa1b2700088891485d308abc4dc5bbf223",
+    "firmware/ui/UiInputHints.h": "a8b00c644257485a93e234245f54deb19424a23869769fccb49808b9a9b4b2d3",
+    "firmware/display/FramebufferDisplay.h": "30904f4e0cfc9863451f071ca1520e57585ad88fe61f0cb9ab2c6e295b1622a9",
+    "firmware/display/SH1106Framebuffer.h": "52c06c303b5e1721924b6dedf421868eb067ff2d89456aa985a088cb2cdc076b",
+    "firmware/display/SSD1315FramebufferDisplay.h": "ec0f2030a212d53a1bd5a5c503445eb2207290a1a656eb74de9ccef6fdbcdc88",
+    "simulator/src/Simulator.cpp": "62249af276bed9f5dec47c8aff1452065bbf45a3a792fa813634ddcd497d22e3",
+    "simulator/src/FirmwareAdapter.h": "73e0ecf04d61bc4be7d6c0495aa305ee15501cb3f16b5d68589ee0f87478eab3",
+    "simulator/web/Bridge.cpp": "aac2208c7073fae1cb0a0647732036ab5b28fda4941c73dd8e399c102e887268"
+  },
+  "native_wasm_tests": {
+    "result": "PASS",
+    "native_wasm_comparisons": 10450,
+    "framebuffer_bytes": 1024,
+    "fixed_wasm_heap": 16777216,
+    "device_access": false,
+    "hardware": "UNTESTED"
+  }
+}

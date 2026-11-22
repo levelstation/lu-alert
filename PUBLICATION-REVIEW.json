@@ -1,36 +1,14 @@
 {
   "date": "2026-11-22",
-  "profile": "LU-Alert",
-  "current_menu_names": [
-    "#Public",
-    "#Test",
-    "#LU-Alert",
-    "#trafic",
-    "#luxembourg",
-    "#saarloorlux",
-    "#trier",
-    "#bot"
-  ],
-  "private_device_profiles_exported": false,
-  "device_access": false,
+  "scope": "public Wio baseline plus separate Heltec V4.3 preview",
+  "hardware_tests": "UNTESTED for Heltec; Wio baseline status retained",
+  "known_personal_marker_count": 0,
+  "devices_accessed": false,
   "hardware_flashed": false,
-  "scope": "Current reviewed source and generated downloads; historical commits and old local archives are retained.",
-  "permitted_public_labels": "Explicitly requested profile names and public project URLs only.",
-  "shared_logic_files": "QuickTx, MenuActions, KeyLock, LockRenderer and FramebufferDisplay shared byte-for-byte; Meshis RC4 adds the Board child selector to FirmwareScreens. Browser compiles each project\u2019s C++ directly.",
-  "personal_paths_or_secrets": "No findings in publication scan; account attribution is controlled by GitHub.",
-  "noise": "Existing MeshCore estimate read only; no radio protocol, scanning or calibration changes.",
-  "heltec_4v2": "Roadmap only",
-  "menu_gestures": {
-    "1": "Back",
-    "2": "Sound toggle after 1200 ms window",
-    "3": "Lock/unlock, no sound change"
-  },
-  "release": "0.2 RC3 plus Web simulator",
-  "browser_simulator": {
-    "compiler": "Emscripten 7.0.1",
-    "device_access": false,
-    "fixed_heap_bytes": 16777216,
-    "framebuffer_bytes": 1024,
-    "native_wasm_pixel_comparisons": 1272
-  }
+  "wio_downloads": "UNCHANGED",
+  "wio_wasm": "UNCHANGED",
+  "source_sha256sums": "acfb08e34a91fcadee6defffc4c4da1ad1c061a84c75d41062ebe01024d40d59",
+  "heltec_web_wasm": "2f5c6b8285f636ab46d14c42a13b0c05283195c4e043f52db02a6bda10d0300c",
+  "shared_cpp_ui": true,
+  "meshcore_protocol_changed": false
 }
