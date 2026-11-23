@@ -11,22 +11,18 @@
   "live_radio": true,
   "hardware_tests": "UNTESTED for new Wio build",
   "files": {
-    "core.mjs": "eff2abf48c443bfc4a34d9c1520202c52420f8b0e461119b3cc0144f97c7d2f3",
-    "core.wasm": "29d0cd6dfa3c77127e4ff9d99eda6cf9743deca0d7adef6dcf53dab9ad2f828e"
+    "core.mjs": "323c11dbb777065a4981d3912a47228d52f3578ef0ae5fdfb6620589769c1a75",
+    "core.wasm": "590cac7e8862bb19654220eaa8d8a52b76f4844cc38324ee35dead41ebdc8344"
   },
   "shared_sources": {
-    "simulator/web/Bridge.cpp": "3e85d826c8410c2ad3c5367b0a3fabe74c2047c0157aa589a30309ff44d5efbb",
-    "firmware/ui/TxProfile.h": "24ed1bbe268400c6c33a1016f4d810aa1b2700088891485d308abc4dc5bbf223",
-    "firmware/ui/MeshiSprites.h": "d16434fc9d62257c8e0b254b9b9768a0434b4fa1853e62818e5eca72bc904abb",
-    "simulator/src/Simulator.cpp": "868279ff522085c9c5dbc381875472c234154e786ce800e3cb3743beb7c97edb",
-    "simulator/src/FirmwareAdapter.h": "73e0ecf04d61bc4be7d6c0495aa305ee15501cb3f16b5d68589ee0f87478eab3",
-    "firmware/ui/FirmwareScreens.h": "9451ccf060ef9d8632b902b28376731023a6ad7fa777cf98c7c6a7d088c053bf",
-    "firmware/ui/QuickTx.h": "0118d65d4599b42ef7ca6e3bf94398ad840fd80833eaa1630ca2df3524026af0",
-    "firmware/ui/MenuActions.h": "962e9fa6a4037136f7aa9b8af3917041a4de7c841379c32572c475e5552b480f",
-    "firmware/core/RuntimeTelemetry.h": "c090d44294911dbf577995f91ff40623a6a1d2f1b198ae93098dd2255ed89b10",
-    "firmware/ui/OledText.h": "5c0b83fb5aee1075fd4da2dbf47e1af528fad723814ff5207c18138e292d2053",
-    "firmware/core/KeyLock.h": "22ed439e0b8d9152f9c9d0103f6751027119c0354d3475782b297ee18cac4819",
-    "firmware/ui/LockRenderer.h": "67a1e23fb5dcb048b3f29d94d848c1a46540a1645d9673acd64004f5dc2028ea",
-    "firmware/display/FramebufferDisplay.h": "30904f4e0cfc9863451f071ca1520e57585ad88fe61f0cb9ab2c6e295b1622a9"
+    "firmware/core/ActiveDiscovery.h": "d66c907a7eed47ecc1c4083e656d2c134442a1c210e9966a7676863721081820",
+    "firmware/core/DiscoveryReply.h": "6221697f40fcf00a3fd7b1d3cd3f8bf785f5f5cb332962bc256e12451f743821",
+    "firmware/core/RuntimeTelemetry.h": "c3466d44d702b4d997e0a816ee15e4018797f1733e88ce3868c40cfb33227720",
+    "firmware/ui/FirmwareScreens.h": "85bb3b46caac9f6380d90b80f1cc35317a33d45126d0f9dc18df197bc63df1e2",
+    "simulator/src/Simulator.cpp": "54721966181f5b9cf18ace9bca3b983917983f047e9cb07923d30cc12ff242cb"
+  },
+  "hardware_boundary_sources": {
+    "firmware/core/MeshCoreDiscovery.h": "3b31865fb6d277dfba9c6773d6ea624ee393c7dd998293237300e98ee98fbc5a",
+    "firmware/core/DiscoveryQueueGuard.h": "dcb1ffce8a2e22d9218fc8665ce68f3bf47dcd93e462aba35c2f2430c6153259"
   }
 }

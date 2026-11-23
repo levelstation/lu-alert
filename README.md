@@ -1,5 +1,7 @@
 # LU-Alert · MeshCore Luxembourg
 
+**Aktiver Zero-Hop-Scan: Wio RC5 / Heltec dev3 (Vorschau).** [Direkt ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scan) · [Bedienung und Airtime](docs/DISCOVERY.md). Expliziter Start, mindestens 30–35 Sekunden, höchstens zwei Minuten; neue Hardwaretests UNTESTED.
+
 **Neu: Wio RC4 / Heltec dev2 – Funkmonitor-Vorschau.** [Repeater live direkt öffnen](https://lu-alert.nosrv.eu/simulator/?demo=repeaters) · [Pegel / Rauschen](https://lu-alert.nosrv.eu/simulator/?demo=noise) · [Bedienung](docs/RADIO-LIVE.md).
 
 **Version 0.2 · v0.2.0-lu-alert-rc3 · eigenständige öffentliche Ausgabe.** Klassische OLED-Menüs und animiertes LU-Alert-Logo, ohne Pixelbegleiter oder Board-Charakterauswahl. Eigene Mac-App und eigene DFU-Datei. Keine persönliche Tracker-Konfiguration enthalten.

@@ -62,3 +62,7 @@ Die nachstehenden Web-Dateien ergänzen die RC3-Ausgabe. DFU, BIN, UF2 und Mac-D
 ## Gemeinsamer Funkmonitor für Wio und Heltec
 
 [Neue Testergebnisse](docs/RADIO-LIVE-BUILD-MANIFEST.json) · [Protokoll-/Download-Regressionsprüfung](docs/RADIO-LIVE-REGRESSION.json) · [Bedienung](docs/RADIO-LIVE.md). Vollständige Namen, RSSI-Balken und direkte Browser-Einstiege; Wio- und Heltec-Builds PASS, neue Hardwaretests UNTESTED. Kein Gerät geflasht.
+
+## Aktiver Zero-Hop-Scan
+
+[Neuer Testbericht](docs/DISCOVERY-TEST-REPORT.json) · [Bedienung, Airtime und Grenzen](docs/DISCOVERY.md). Nativer MeshCore-Control-Discovery-Adapter; gemeinsame Wio-/Heltec-/WASM-Implementierung, keine echten Geräteports. Neue Hardwaretests UNTESTED.

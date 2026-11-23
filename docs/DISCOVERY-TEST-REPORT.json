@@ -1,0 +1,320 @@
+{
+  "result": "PASS",
+  "date": "2026-11-23",
+  "status": "PREVIEW",
+  "wio_version": "RC5",
+  "heltec_version": "dev3",
+  "hardware_flashed": false,
+  "physical_tests": "UNTESTED",
+  "shared_code": [
+    "ActiveDiscovery.h",
+    "DiscoveryReply.h",
+    "RuntimeTelemetry.h",
+    "FirmwareScreens.h"
+  ],
+  "hardware_boundary": "MeshCoreDiscovery.h + exact owned-packet DiscoveryQueueGuard; separate simulated transport",
+  "scan_state_bytes": 288,
+  "scan_state_limit_bytes": 512,
+  "telemetry_state_limit_bytes": 2048,
+  "framebuffer_bytes": 1024,
+  "scan_session_ms": 120000,
+  "maximum_requests": 4,
+  "minimum_spacing_ms": 30000,
+  "positive_jitter_max_ms": 5000,
+  "response_window_ms": 20000,
+  "unlock": "fresh interval, no immediate transmit",
+  "queue_cancellation": "exact own pending packet on stop/expiry/lock/leave; no in-flight abort, no other packets removed",
+  "scan_unit_sanitizers": "PASS",
+  "native_adapter_sanitizers": "PASS",
+  "reply_parser_sanitizers": "PASS",
+  "queue_ownership_sanitizers": "PASS",
+  "wio_native": {
+    "result": "PASS",
+    "profile": "Wio live radio",
+    "pixel_snapshots": 33,
+    "full_name_bytes": 31,
+    "hardware": "UNTESTED",
+    "hardware_flashed": false
+  },
+  "wio_asan_ubsan": {
+    "result": "PASS",
+    "profile": "Wio live radio",
+    "pixel_snapshots": 33,
+    "full_name_bytes": 31,
+    "hardware": "UNTESTED",
+    "hardware_flashed": false
+  },
+  "heltec_native": {
+    "result": "PASS",
+    "profile": "Heltec V4.3 OLED PRG",
+    "pixel_snapshots": 354,
+    "main_menu_entries": 14,
+    "hardware": "UNTESTED",
+    "hardware_flashed": false
+  },
+  "heltec_asan_ubsan": {
+    "result": "PASS",
+    "profile": "Heltec V4.3 OLED PRG",
+    "pixel_snapshots": 354,
+    "main_menu_entries": 14,
+    "hardware": "UNTESTED",
+    "hardware_flashed": false
+  },
+  "wio_wasm": {
+    "result": "PASS",
+    "native_wasm_framebuffer_comparisons": 1498,
+    "functional_assertion_groups": 124,
+    "pages": [
+      "Home",
+      "Timezone",
+      "Live Radio / GPS",
+      "Pegel / Rauschen",
+      "Repeater live",
+      "Sound",
+      "GPS Course",
+      "Diagnostics",
+      "Messages",
+      "Recent adverts",
+      "Radio",
+      "Bluetooth",
+      "Advertise",
+      "GPS",
+      "Discovery"
+    ],
+    "pets": 0,
+    "channel_count": 8,
+    "framebuffer_bytes": 1024,
+    "wasm_memory_bytes": 16777216,
+    "hardware_tests": "UNTESTED",
+    "device_access": false,
+    "wasm_sha256": "590cac7e8862bb19654220eaa8d8a52b76f4844cc38324ee35dead41ebdc8344"
+  },
+  "heltec_wasm": {
+    "result": "PASS",
+    "native_wasm_comparisons": 10450,
+    "framebuffer_bytes": 1024,
+    "fixed_wasm_heap": 16777216,
+    "device_access": false,
+    "hardware": "UNTESTED"
+  },
+  "browser_scan_shortcuts": {
+    "result": "PASS",
+    "assertions": 24,
+    "profiles": [
+      "Wio",
+      "Heltec"
+    ]
+  },
+  "legacy_web_shortcuts": {
+    "result": "PASS",
+    "assertions": 26
+  },
+  "wio_dfu": {
+    "dfu_validation": "PASS",
+    "format": "Adafruit/Nordic legacy DFU 0.5 application-only",
+    "zip_root_files": [
+      "firmware.bin",
+      "manifest.json",
+      "firmware.dat"
+    ],
+    "application_bytes": 437820,
+    "application_sha256": "b493f942ac66992b09515be588cea44c189f63710e3bf7e33946727c7b92c406",
+    "crc16": "0x8afa",
+    "device_type": "0x52",
+    "softdevice_required_fwid": "0x0123",
+    "softdevice_required": "S140 7.3.0",
+    "board_id_in_package": null,
+    "bin_reference_match": "PASS",
+    "uf2_reference_match": "PASS",
+    "hardware_compatibility": "UNKNOWN",
+    "hardware_dfu_test": "UNTESTED"
+  },
+  "wio_memory": {
+    "layout_check": "PASS",
+    "application_start": "0x27000",
+    "application_end_exclusive": "0xD4000",
+    "softdevice_required": "S140 7.3.0",
+    "new_firmware_physical_test": "UNTESTED",
+    "sections": [
+      {
+        "name": ".text",
+        "start": "0x27000",
+        "end_exclusive": "0x908c0",
+        "bytes": 432320
+      },
+      {
+        "name": ".ARM.exidx",
+        "start": "0x908c0",
+        "end_exclusive": "0x908c8",
+        "bytes": 8
+      },
+      {
+        "name": ".data",
+        "start": "0x20006000",
+        "end_exclusive": "0x20007574",
+        "bytes": 5492
+      },
+      {
+        "name": ".bss",
+        "start": "0x20007574",
+        "end_exclusive": "0x2002b820",
+        "bytes": 148140
+      },
+      {
+        "name": ".heap",
+        "start": "0x2002b820",
+        "end_exclusive": "0x2003f800",
+        "bytes": 81888
+      }
+    ]
+  },
+  "heltec_images": {
+    "lu_alert_heltec_v43_r2_oled": {
+      "result": "PASS",
+      "environment": "lu_alert_heltec_v43_r2_oled",
+      "chip": "ESP32-S3",
+      "application_bytes": 1690976,
+      "application_sha256": "b11c961fb2d6004bacd3afc2ee171e1a4e1fd4fddb2ec11b810612c7904f8b0a",
+      "partition_table_sha256": "bd0f7954aca2ef7d925ee21aaa1f3dc8822d1d6ce5cbbd26a135e5886bfff6ce",
+      "partitions": [
+        {
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size": 20480,
+          "label": "nvs",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 0,
+          "start": 57344,
+          "size": 8192,
+          "label": "otadata",
+          "flags": 0
+        },
+        {
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size": 6553600,
+          "label": "app0",
+          "flags": 0
+        },
+        {
+          "type": 0,
+          "subtype": 17,
+          "start": 6619136,
+          "size": 6553600,
+          "label": "app1",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 130,
+          "start": 13172736,
+          "size": 3538944,
+          "label": "spiffs",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 3,
+          "start": 16711680,
+          "size": 65536,
+          "label": "coredump",
+          "flags": 0
+        }
+      ],
+      "flash_capacity_bytes": 16777216,
+      "partition_md5": "PASS",
+      "image_checksum_and_hash": "PASS",
+      "filesystem_mount": "SPIFFS.begin(false); stop on failure, no automatic format",
+      "physical_board_variant": "UNVERIFIED",
+      "display_radio_ble_gnss_hardware": "UNTESTED",
+      "hardware_flashed": false
+    },
+    "lu_alert_heltec_v43_r8_oled": {
+      "result": "PASS",
+      "environment": "lu_alert_heltec_v43_r8_oled",
+      "chip": "ESP32-S3",
+      "application_bytes": 1694432,
+      "application_sha256": "f90a89b9797b7abe7d631c3d0f01542256de6bc679db3e5c0e86c805b854cb28",
+      "partition_table_sha256": "bd0f7954aca2ef7d925ee21aaa1f3dc8822d1d6ce5cbbd26a135e5886bfff6ce",
+      "partitions": [
+        {
+          "type": 1,
+          "subtype": 2,
+          "start": 36864,
+          "size": 20480,
+          "label": "nvs",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 0,
+          "start": 57344,
+          "size": 8192,
+          "label": "otadata",
+          "flags": 0
+        },
+        {
+          "type": 0,
+          "subtype": 16,
+          "start": 65536,
+          "size": 6553600,
+          "label": "app0",
+          "flags": 0
+        },
+        {
+          "type": 0,
+          "subtype": 17,
+          "start": 6619136,
+          "size": 6553600,
+          "label": "app1",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 130,
+          "start": 13172736,
+          "size": 3538944,
+          "label": "spiffs",
+          "flags": 0
+        },
+        {
+          "type": 1,
+          "subtype": 3,
+          "start": 16711680,
+          "size": 65536,
+          "label": "coredump",
+          "flags": 0
+        }
+      ],
+      "flash_capacity_bytes": 16777216,
+      "partition_md5": "PASS",
+      "image_checksum_and_hash": "PASS",
+      "filesystem_mount": "SPIFFS.begin(false); stop on failure, no automatic format",
+      "physical_board_variant": "UNVERIFIED",
+      "display_radio_ble_gnss_hardware": "UNTESTED",
+      "hardware_flashed": false
+    }
+  },
+  "pinned_meshcore": "75b04ef06def54b348400cb1b138afb6749ffd4f",
+  "protocol_dispatcher_ble_files_unchanged": [
+    "src/Mesh.cpp",
+    "src/Dispatcher.cpp",
+    "src/Packet.cpp",
+    "src/Packet.h",
+    "src/helpers/BaseChatMesh.cpp",
+    "src/helpers/BaseChatMesh.h",
+    "src/helpers/esp32/SerialBLEInterface.cpp",
+    "src/helpers/esp32/SerialBLEInterface.h",
+    "src/helpers/nrf52/SerialBLEInterface.cpp",
+    "src/helpers/nrf52/SerialBLEInterface.h"
+  ],
+  "all_previous_downloads": "UNCHANGED",
+  "all_16_meshis": "UNCHANGED",
+  "old_wio_web": "preserved byte-exact in wio-rc4",
+  "regulatory_conformity": "NOT CERTIFIED; auxiliary scan guard, volatile budget; actual saved RF/ERP unverified"
+}

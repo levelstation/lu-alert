@@ -1,3 +1,5 @@
+> Neu ab Wio RC5/Heltec dev3: [optionaler aktiver Zero-Hop-Scan](DISCOVERY.md). Die folgenden Abschnitte beschreiben den zuvor veröffentlichten passiven Funkmonitor.
+
 # LU-Alert – Wio und Heltec Funkmonitor
 
 22. November 2026. Wio RC4: Software-Vorschau; neue physische Tests UNTESTED. Heltec dev2: Vorschau, Hardware UNTESTED.
