@@ -1,6 +1,6 @@
 {
   "date": "2026-11-23",
-  "scope": "mobile browser console, download center, aggregate download counters and disabled newsletter preparation",
+  "scope": "central NOSRV newsletter links and concise visitor copy",
   "known_personal_markers": 0,
   "protocol_changed": false,
   "firmware_and_wasm": "UNCHANGED",
@@ -8,6 +8,6 @@
   "new_hardware_tests": "UNTESTED",
   "browser_visual_qa": "NOT_RUN",
   "hardware_flashed": false,
-  "newsletter": "PREPARED_DISABLED",
-  "source_sha256sums": "4ab4b2c9f6825710d1425294b622c0c41dfc9002cce1bb2c43415d1c5389c0db"
+  "newsletter": "CENTRAL_NOSRV_PREPARED_DISABLED",
+  "source_sha256sums": "8803e00dd1ef3ae786789754370e05327d7c9b8e1aea88ba96607219fa7150a9"
 }

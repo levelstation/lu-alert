@@ -1,5 +1,6 @@
 {
   "project": "lu-alert",
   "title": "LU-Alert",
-  "canonicalOrigin": "https://lu-alert.nosrv.eu"
+  "canonicalOrigin": "https://lu-alert.nosrv.eu",
+  "newsletterUrl": "https://www.nosrv.eu/newsletter/"
 }
