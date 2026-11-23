@@ -1,10 +1,13 @@
 {
   "date": "2026-11-23",
-  "scope": "explicit native zero-hop discovery preview",
+  "scope": "mobile browser console, download center, aggregate download counters and disabled newsletter preparation",
   "known_personal_markers": 0,
   "protocol_changed": false,
+  "firmware_and_wasm": "UNCHANGED",
   "old_downloads": "UNCHANGED",
   "new_hardware_tests": "UNTESTED",
+  "browser_visual_qa": "NOT_RUN",
   "hardware_flashed": false,
-  "source_sha256sums": "f003fc0b7686ba251a2d67938be304924fe9d05b42fde850453125fc2310e1b3"
+  "newsletter": "PREPARED_DISABLED",
+  "source_sha256sums": "4ab4b2c9f6825710d1425294b622c0c41dfc9002cce1bb2c43415d1c5389c0db"
 }
