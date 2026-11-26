@@ -5,18 +5,27 @@ enum class TxArgument:unsigned char { None, Place, Station, Page };
 struct TxPreset {const char* label;const char* text;bool botConfirmed;TxArgument argument;
  constexpr TxPreset(const char* l="",const char* t="",bool confirmed=false,TxArgument arg=TxArgument::None):label(l),text(t),botConfirmed(confirmed),argument(arg){}
 };
+#if defined(MESHIS_V2) && defined(LU_ALERT_BRANDING) && !defined(MESHIS_HELTEC_PRG)
+#define LU_ALERT_RX_CHANNELS 1
+constexpr unsigned txChannelCount(){return 10;}
+inline const char* txChannel(unsigned n){static const char* const names[]={"#public","#test","#lu-alert","#trafic","#luxembourg","#hammradio","#bot","#emergency","#saarland","#trier"};return n<txChannelCount()?names[n]:"";}
+inline const char* txMenu(unsigned n){static const char* const names[]={"PUBLIC // QUICK TX","TEST // QUICK TX","NOSRV // LU-ALERT","TRAFIC // QUICK TX","LUXEMBOURG // TX","HAMMRADIO // TX","BOT // QUICK TX","EMERGENCY // TX","SAARLAND // TX","TRIER // QUICK TX"};return n<txChannelCount()?names[n]:"QUICK TX";}
+constexpr unsigned txBotChannel(){return 6;}
+#else
 constexpr unsigned txChannelCount(){return 8;}
 inline const char* txChannel(unsigned n){static const char* const names[]={"#Public","#Test","#LU-Alert","#trafic","#luxembourg","#saarloorlux","#trier","#bot"};return n<txChannelCount()?names[n]:"";}
 inline const char* txMenu(unsigned n){static const char* const names[]={"PUBLIC // QUICK TX","TEST // QUICK TX","NOSRV // LU-ALERT","TRAFIC // QUICK TX","LUXEMBOURG // TX","SAARLOORLUX // TX","TRIER // QUICK TX","BOT // QUICK TX"};return n<txChannelCount()?names[n]:"QUICK TX";}
+constexpr unsigned txBotChannel(){return 7;}
+#endif
 inline unsigned txCount(unsigned n){
 #if defined(MESHIS_HELTEC_PRG) || defined(LU_ALERT_BOT_CATALOG)
- const unsigned counts[]={4,3,30,24,4,4,4,1};
+ const unsigned alertCount=30,trafficCount=24;
 #else
- const unsigned counts[]={4,3,4,8,4,4,4,1};
+ const unsigned alertCount=4,trafficCount=8;
 #endif
- return n<txChannelCount()?counts[n]:0;
+ return n>=txChannelCount()?0:n==1?3:n==2?alertCount:n==3?trafficCount:n==txBotChannel()?1:4;
 }
-inline bool txAwaitsReply(unsigned n){return n==2 || n==3 || n==7;}
+inline bool txAwaitsReply(unsigned n){return n==2 || n==3 || n==txBotChannel();}
 inline TxPreset txPreset(unsigned channel,unsigned item){
  static const TxPreset publicItems[]={{"Hallo","Hallo",false},{"Moin","Moin",false},{"Wie geht’s?","Wie geht’s?",false},{"ACK 75","ACK 75",false}};
  static const TxPreset testItems[]={{"Ping","Ping",false},{"Test","Test",false},{"Hop","Hop",false}};
@@ -29,7 +38,7 @@ inline TxPreset txPreset(unsigned channel,unsigned item){
  static const TxPreset trafficItems[]={{"Traffic","traffic",false},{"Info","info",false},{"A1","A1",false},{"A3","A3",false},{"A4","A4",false},{"A6","A6",false},{"A7","A7",false},{"A13","A13",false}};
 #endif
  if(item>=txCount(channel))return {"Unavailable","",false};
- if(channel==7)return {"Befehl folgt","",false};
+ if(channel==txBotChannel())return {"Befehl folgt","",false};
  return channel==1?testItems[item]:channel==2?alertItems[item]:channel==3?trafficItems[item]:publicItems[item];
 }
 }

@@ -1,0 +1,65 @@
+{
+  "result": "PASS",
+  "scope": "LU-Alert Wio shared C++ RX channel chooser and filter",
+  "channel_names": [
+    "#public",
+    "#test",
+    "#lu-alert",
+    "#trafic",
+    "#luxembourg",
+    "#hammradio",
+    "#bot",
+    "#emergency",
+    "#saarland",
+    "#trier"
+  ],
+  "channel_count": 10,
+  "native_wasm_framebuffer_comparisons": 33,
+  "functional_groups": 28,
+  "all_visible_count": 8,
+  "filter_counts": [
+    {
+      "name": "#public",
+      "count": 1
+    },
+    {
+      "name": "#test",
+      "count": 1
+    },
+    {
+      "name": "#lu-alert",
+      "count": 1
+    },
+    {
+      "name": "#trafic",
+      "count": 1
+    },
+    {
+      "name": "#luxembourg",
+      "count": 1
+    },
+    {
+      "name": "#hammradio",
+      "count": 1
+    },
+    {
+      "name": "#bot",
+      "count": 0
+    },
+    {
+      "name": "#emergency",
+      "count": 0
+    },
+    {
+      "name": "#saarland",
+      "count": 1
+    },
+    {
+      "name": "#trier",
+      "count": 1
+    }
+  ],
+  "device_access": false,
+  "hardware_flashed": false,
+  "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
+}

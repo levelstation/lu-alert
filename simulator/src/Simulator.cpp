@@ -142,7 +142,12 @@ unsigned Simulator::simulatedSends()const{return the_mesh.sends;}
 std::string Simulator::status()const{if(heltecPrg())return std::string("SIMULATION | Heltec V4.3 | ")+(locked()?"LOCKED":"READY")+" | SOUND "+(soundEnabled()?"ON":"OFF")+" | RX "+std::to_string(rxCount())+" | TX "+std::to_string(simulatedSends())+(prgPressed()?" | PRG DOWN":" | PRG FREE");return "SIMULATION | LU Alert | Demo data only";}
 void Simulator::seed(){messages.receive("DEMO NODE A","SIMULATION: Demo message. No radio traffic.");
 #if defined(MESHIS_V2)
+#if defined(LU_ALERT_RX_CHANNELS)
+meshis::RxChannelIdentity seeded;messageMesh.rxChannelIdentity(meshis::txChannel(0),seeded);
+quickTx.receive(meshis::txChannel(0),"DEMO NODE A","SIMULATION: Demo message. No radio traffic.",simMillis,{},seeded);
+#else
 quickTx.receive("#Public","DEMO NODE A","SIMULATION: Demo message. No radio traffic.",simMillis);
+#endif
 #endif
 }
 namespace {
@@ -260,13 +265,27 @@ int Simulator::lockPhase()const{return static_cast<int>(meshis::keyLock().phase(
 void Simulator::menuLevel(bool pressed){impl_->menuDown=pressed;}
 void Simulator::receiveSimulated(const char* channel,const char* sender,const char* text,bool authenticated,bool expected,bool correlated){
 #if defined(MESHIS_V2)
-quickTx.receive(channel,sender,text,simMillis,{authenticated,expected,correlated});++radio_driver.rx;
+#if defined(LU_ALERT_RX_CHANNELS)
+meshis::RxChannelIdentity identity;messageMesh.rxChannelIdentity(channel,identity);
+quickTx.receive(channel,sender,text,simMillis,{authenticated,expected,correlated},identity);
+#else
+quickTx.receive(channel,sender,text,simMillis,{authenticated,expected,correlated});
+#endif
+++radio_driver.rx;
 #endif
 messages.receive(sender,text);nux.event(meshis::MeshiEvent::MessageReceived,simMillis);render();}
 void Simulator::setSimChannel(unsigned slot,const char* name){
 #if defined(MESHIS_V2)
 if(slot<meshis::txChannelCount())snprintf(messageMesh.names[slot],32,"%s",name);
 #endif
+}
+void Simulator::setSimChannelEpoch(unsigned slot,uint32_t epoch){
+#if defined(LU_ALERT_RX_CHANNELS)
+ if(slot<meshis::txChannelCount())messageMesh.channelEpoch[slot]=epoch;
+#else
+ (void)slot;(void)epoch;
+#endif
+ render();
 }
 void Simulator::setSimTxFailure(bool fail){
 #if defined(MESHIS_V2)
@@ -391,5 +410,53 @@ void Simulator::showTextScrollDemo(int view){
  key(KEY_ENTER);key(KEY_DOWN);if(view==3)key(KEY_DOWN);key(KEY_ENTER);render();
 #else
  (void)view;
+#endif
+}
+
+int Simulator::rxChannelCount(){
+#if defined(LU_ALERT_RX_CHANNELS)
+ return meshis::txChannelCount();
+#else
+ return 0;
+#endif
+}
+const char* Simulator::rxChannelName(int index){return index>=0&&index<rxChannelCount()?meshis::txChannel(index):"";}
+int Simulator::rxFilter()const{
+#if defined(LU_ALERT_RX_CHANNELS)
+ return quickTx.inboxFilter();
+#else
+ return -1;
+#endif
+}
+unsigned Simulator::rxVisibleCount()const{
+#if defined(LU_ALERT_RX_CHANNELS)
+ quickTx.refreshInboxFilter(messageMesh);return quickTx.inboxVisibleCount();
+#else
+ return 0;
+#endif
+}
+bool Simulator::rxFilterAvailable()const{
+#if defined(LU_ALERT_RX_CHANNELS)
+ quickTx.refreshInboxFilter(messageMesh);return quickTx.inboxFilterAvailable();
+#else
+ return false;
+#endif
+}
+void Simulator::setRxFilter(int filter){
+#if defined(LU_ALERT_RX_CHANNELS)
+ if(locked()||filter<-1||filter>=rxChannelCount())return;
+ for(int page=0;page<pageCount();++page)if(!strcmp(pageName(page),"Messages")){goToPage(page);break;}
+ quickTx.selectInboxFilter(filter,messageMesh);resetTextReading();render();
+#else
+ (void)filter;
+#endif
+}
+void Simulator::showRxChannelsDemo(){
+#if defined(LU_ALERT_RX_CHANNELS)
+ if(locked())return;
+ setRxFilter(-1);
+ static const unsigned channels[]={0,1,2,3,4,5,8,9};
+ for(const unsigned channel:channels){char text[140];snprintf(text,sizeof(text),"SIMULATION: Beispieltext auf %s. Lokale Testdaten, keine echte Funknachricht oder Warnung.",meshis::txChannel(channel));receiveSimulated(meshis::txChannel(channel),"DEMO NODE",text);}
+ setRxFilter(-1);
 #endif
 }

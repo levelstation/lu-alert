@@ -8,6 +8,21 @@ class MeshCoreMessages {
   ChannelDetails prepared_ = {};
   int preparedIndex_=-1;
 public:
+#if defined(LU_ALERT_RX_CHANNELS)
+  static meshis::RxChannelIdentity receivedChannelIdentity(const ChannelDetails& channel){
+    meshis::RxChannelIdentity identity;
+    // Internal only: full key material is never copied into the RX inbox or UI.
+    mesh::Utils::sha256(identity.bytes,sizeof(identity.bytes),channel.channel.secret,sizeof(channel.channel.secret));
+    identity.valid=true;return identity;
+  }
+  bool rxChannelIdentity(const char* name,meshis::RxChannelIdentity& identity)const{
+    identity={};unsigned matches=0;ChannelDetails channel;
+    for(int i=0;i<MAX_GROUP_CHANNELS;++i)if(the_mesh.getChannel(i,channel)&&channel.name[0]&&meshis::sameChannel(channel.name,name)){
+      identity=receivedChannelIdentity(channel);++matches;
+    }
+    if(matches!=1){identity={};return false;}return true;
+  }
+#endif
 #if defined(MESHIS_V2)
   bool prepareNamed(const char* name){
     preparedIndex_=-1;unsigned matches=0;ChannelDetails ch;

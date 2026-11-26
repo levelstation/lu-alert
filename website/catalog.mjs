@@ -4,17 +4,17 @@ import {resolve,join,relative} from 'node:path';
 import {createHash} from 'node:crypto';
 const docs=resolve(process.argv[2]||(existsSync('assets/data/download-catalog.json')?'assets':'docs')),project=process.argv[3]||'meshis';
 if(!['meshis','lu-alert'].includes(project))throw Error('Choose an existing firmware project');
-const title=project==='lu-alert'?'LU-Alert':'Meshis',rc=project==='lu-alert'?'RC7':'RC8',prefix=`/downloads/text-scroll/${title}`,heltecPrefix=`/downloads/pin/${title}`;
+const channels=project==='lu-alert',title=channels?'LU-Alert':'Meshis',rc='RC8',releaseName=channels?'Kanalauswahl':'Laufschrift',prefix=`/downloads/${channels?'channels':'text-scroll'}/${title}`,heltecPrefix=`/downloads/pin/${title}`;
 let previous={};try{const old=JSON.parse(await readFile(join(docs,'data/download-catalog.json'),'utf8'));previous=Object.fromEntries([...old.releases,...old.legacy].map(item=>[item.path,item]));}catch(error){if(error.code!=='ENOENT')throw error;}
 const current=[
- {id:`wio-${rc.toLowerCase()}-dfu`,board:'wio',kind:'firmware',version:rc,format:'DFU ZIP',path:`${prefix}-Wio-Laufschrift-${rc}-DFU.zip`},
- {id:`wio-${rc.toLowerCase()}-bin`,board:'wio',kind:'firmware',version:rc,format:'BIN',path:`${prefix}-Wio-Laufschrift-${rc}.bin`},
- {id:`wio-${rc.toLowerCase()}-uf2`,board:'wio',kind:'firmware',version:rc,format:'UF2',path:`${prefix}-Wio-Laufschrift-${rc}.uf2`},
- {id:`wio-${rc.toLowerCase()}-macos`,board:'wio',kind:'simulator',version:rc,format:'macOS ZIP',path:`${prefix}-Wio-Laufschrift-${rc}-macOS-arm64.zip`},
+ {id:`wio-${rc.toLowerCase()}-dfu`,board:'wio',kind:'firmware',version:rc,format:'DFU ZIP',path:`${prefix}-Wio-${releaseName}-${rc}-DFU.zip`},
+ {id:`wio-${rc.toLowerCase()}-bin`,board:'wio',kind:'firmware',version:rc,format:'BIN',path:`${prefix}-Wio-${releaseName}-${rc}.bin`},
+ {id:`wio-${rc.toLowerCase()}-uf2`,board:'wio',kind:'firmware',version:rc,format:'UF2',path:`${prefix}-Wio-${releaseName}-${rc}.uf2`},
+ {id:`wio-${rc.toLowerCase()}-macos`,board:'wio',kind:'simulator',version:rc,format:'macOS ZIP',path:`${prefix}-Wio-${releaseName}-${rc}-macOS-arm64.zip`},
  {id:'heltec-dev4-r2-bin',board:'heltec',kind:'firmware',version:'dev4 · R2',format:'BIN',path:`${heltecPrefix}-Heltec-PIN-dev4-R2.bin`},
  {id:'heltec-dev4-r8-bin',board:'heltec',kind:'firmware',version:'dev4 · R8',format:'BIN',path:`${heltecPrefix}-Heltec-PIN-dev4-R8.bin`},
  {id:'heltec-dev4-macos',board:'heltec',kind:'simulator',version:'dev4',format:'macOS ZIP',path:`${heltecPrefix}-Heltec-PIN-dev4-macOS-arm64.zip`},
- {id:'source-wio-scroll',board:'source',kind:'source',version:rc,format:'Source ZIP',path:`${prefix}-Wio-Laufschrift-Source.zip`},
+ {id:channels?'source-wio-channels':'source-wio-scroll',board:'source',kind:'source',version:rc,format:'Source ZIP',path:`${prefix}-Wio-${releaseName}-Source.zip`},
 ];
 const digest=data=>createHash('sha256').update(data).digest('hex');
 async function metadata(item,current){const data=await readFile(join(docs,item.path));return {...item,title:`${title} ${item.board==='wio'?'Wio':item.board==='heltec'?'Heltec':'Quellcode'}`,bytes:data.length,sha256:digest(data),url:'/get/'+item.id,current,preview:true};}

@@ -1,8 +1,9 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'"><title>LU-Alert · Web-Simulator</title><link rel="stylesheet" href="simulator.css?v=console-v2"><script type="module" src="simulator.mjs?v=text-scroll-20261126-v1"></script></head><body data-profile="lu-alert">
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'wasm-unsafe-eval'; style-src 'self'; img-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'"><title>LU-Alert · Web-Simulator</title><link rel="stylesheet" href="simulator.css?v=lu-channels-20261126-v1"><script type="module" src="simulator.mjs?v=lu-channels-20261126-v1"></script></head><body data-profile="lu-alert">
 <main class="lab">
   <header class="masthead">
     <div class="title-row"><a class="brand" href="../">LU-Alert</a><h1>OLED-Simulator</h1></div>
     <p class="warning">SIMULATION · keine Geräteverbindung · kein echter Funkverkehr</p>
+    <p class="muted">Unabhängiges Community-Projekt · keine offizielle LU-Alert-App. <a href="/#project-notice">Projekthinweis</a></p>
     <nav class="profile-nav" aria-label="Hardware auswählen">
       <a href="./" aria-current="page">Wio L1 Pro</a>
       <a href="heltec/">Heltec V4.3 · Vorschau</a>
@@ -12,6 +13,7 @@
     <div class="console-toolbar">
       <label>Ansicht <select id="page" disabled></select></label>
       <label id="pet-label" hidden>Meshi <select id="pet" disabled></select></label>
+      <label>RX-Kanal <select id="rx-channel" aria-label="RX-Kanal" aria-describedby="rx-channel-hint" disabled></select></label>
     </div>
     <section class="display-side" aria-label="Simuliertes OLED">
       <div class="viewport" id="viewport"><canvas id="oled" width="256" height="128" tabindex="0" aria-label="Simuliertes monochromes OLED. Pfeiltasten, Enter und Escape bedienen den Tracker."></canvas></div>
@@ -31,12 +33,14 @@
     </aside>
     <p id="console-status" class="console-status" role="status" aria-live="polite">SIM · Initialisierung …</p>
   </section>
+  <p id="rx-visible" class="muted" role="status" aria-live="polite">Empfang wird geladen …</p>
+  <p id="rx-channel-hint" class="muted">Inbox nach Empfangskanal filtern. ENTER im Nachrichtenfenster öffnet dieselbe Auswahl am OLED. Die Simulation verwendet nur Beispielnachrichten.</p>
   <details class="lab-tools" id="lab-tools">
     <summary>Demos & Anzeige</summary>
     <div class="lab-panels">
       <section class="radio-quick" id="funkmonitor" aria-label="Funkmonitor ausprobieren">
         <h2>Funkmonitor · simulierte Demodaten</h2>
-        <div class="test-actions"><button id="long-text" type="button" disabled>Demo: lange Texte</button><button id="long-name" type="button" disabled>Langer Repeatername</button></div>
+        <div class="test-actions"><button id="long-text" type="button" disabled>Demo: lange Texte</button><button id="long-name" type="button" disabled>Langer Repeatername</button><button id="channels-demo" type="button" disabled>Demo: RX-Kanäle</button></div>
         <p class="muted">Wio-Laufschrift: Zu lange Texte starten nach 1,2 Sekunden Lesepause nach links. Kurze Texte und benachbarte Werte bleiben stehen.</p>
         <div><button id="live-repeaters" type="button" disabled>Repeater live</button><button id="live-noise" type="button" disabled>Pegel / Rauschen</button><button id="live-scan" disabled>0-Hop-Scan · SIM</button></div>
         <details><summary>Bildschirmsperre mit PIN ausprobieren</summary><p>Im Menü „Bildschirmsperre“ wählen, vier Ziffern festlegen und zur Bestätigung wiederholen. Eine voreingestellte PIN gibt es nicht. Ändern und Entfernen verlangen den bisherigen Code.</p><p>Wio: Auf/Ab wählt die Ziffer, ENTER bestätigt. Heltec: PRG kurz wählt, 0,6 bis unter 1,5 Sekunden halten bestätigt; ab 1,5 Sekunden geht es zurück. Nach 3× MENU beziehungsweise PRG lässt sich die gesperrte Ansicht mit dem Code öffnen.</p><p class="muted">Die PIN gilt nur in dieser Simulation. RESET behält sie in der aktuellen Sitzung; Neuladen startet frisch. Drei falsche Codes: 30 Sekunden warten. Empfang bleibt aktiv; die Simulation sendet keinen echten Funk.</p></details>
@@ -58,10 +62,11 @@
   </details>
   <details class="input-help"><summary>Bedienung & Tastenkürzel</summary>
       <p>Pfeile = Joystick · Enter = Bestätigen · Escape = MENU · R = normaler Reset.</p>
+      <p>In der Inbox öffnet ENTER die Kanalauswahl. Auf/Ab wählt einen Empfangskanal, ENTER bestätigt. „Alle“ zeigt die vorhandenen Nachrichten aus allen Kanälen.</p>
       <p>1× MENU: Zurück · 2×: Sound · 3×: Sperre. Das 1200-ms-Fenster wird abgewartet.</p>
       <p>Sound zeigt den simulierten Summerstatus. Die Website spielt keine echten Gerätetöne. Einstellungen bleiben innerhalb dieser Sitzung erhalten.</p>
   </details>
-  <details><summary>Über diese Simulation</summary><p>Probiere die Menüs, Nachrichtenansichten und Tastensperre direkt im Browser aus. Frequenz, RX/TX, BLE, GPS und Akku sind lokale Demodaten. Es gibt keine Verbindung zu einem Funkgerät; Kanäle und Schlüssel auf deinem Tracker bleiben unverändert.</p><p>Kanalmenüs: Public, Test, LU-Alert, trafic, luxembourg, saarloorlux, trier und bot.</p></details>
+  <details><summary>Über diese Simulation</summary><p>Probiere die Menüs, Nachrichtenansichten und Tastensperre direkt im Browser aus. Frequenz, RX/TX, BLE, GPS und Akku sind lokale Demodaten. Es gibt keine Verbindung zu einem Funkgerät; Kanäle und Schlüssel auf deinem Tracker bleiben unverändert.</p><p>Zehn Kanalmenüs: public, test, lu-alert, trafic, luxembourg, hammradio, bot, emergency, saarland und trier. Ein Menüeintrag legt auf einem echten Gerät keinen Kanal und keinen Schlüssel an.</p></details>
   
 </main>
 </body></html>

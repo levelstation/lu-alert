@@ -1,5 +1,13 @@
 # LU-Alert Changelog
 
+## v0.2.0-lu-alert-rc8 · 26 November 2026
+
+- Wio: zehn Kanalmenüs in Quick TX sowie „Alle“ und zehn einzelne Kanalfilter in Live RX / Inbox. ENTER öffnet die RX-Auswahl; der Empfang anderer eingerichteter Kanäle läuft weiter.
+- Wio-Menüs: #public, #test, #lu-alert, #trafic, #luxembourg, #hammradio, #bot, #emergency, #saarland und #trier. PIN-Sperre und Laufschrift bleiben erhalten.
+- Browser- und Mac-Simulation verwenden dieselbe Kanalauswahl; Kanaländerungen vor simuliertem Versand werden erneut geprüft. Neue Wio-Downloads unter docs/downloads/channels/.
+- Website und Hilfe grenzen das unabhängige MeshCore-Projekt vom offiziellen LU-Alert-System ab und nennen Quelle sowie Übertragungsgrenzen.
+- Heltec bleibt die bisherige dev4-Vorschau. Kein Gerät geflasht; physischer Test der neuen RC8-Kanalauswahl steht aus.
+
 ## 26. November 2026 · Wio-Laufschrift
 
 v0.2.0-lu-alert-rc7: abgeschnittene Nachrichten, Absender, Kontakte, Menütexte und Repeater-Namen werden nach einer kurzen Lesepause nach links bewegt. Kurze Texte und benachbarte Messwerte bleiben stehen. Die Anzeige läuft ohne blockierende Wartezeiten und ohne zusätzliche Funkpakete; die vorhandene PIN-Sperre bleibt erhalten. Neue Wio-Firmware und Mac-App sowie aktualisierte Browser-Simulation mit langem Beispieltext. Heltec dev4 bleibt unverändert Vorschau. Keine Geräte geflasht; physische Tests der Laufschrift stehen aus.

@@ -1,27 +1,14 @@
-# LU-Alert · MeshCore Luxembourg
+# LU-Alert für MeshCore
 
-**Neu: Laufschrift für den Wio Tracker L1 Pro.** Lange Nachrichten, Absender und Repeater-Namen laufen nach einer kurzen Lesepause nach links. Kurze Texte bleiben stehen. **v0.2.0-lu-alert-rc7**; die bestehende PIN-Sperre bleibt erhalten. [Im Browser ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scroll) · [Neue Wio-Downloads](docs/downloads/text-scroll/) · [Bedienung](docs/TEXT-SCROLL.md). Heltec bleibt **dev4 · Vorschau** mit seiner bisherigen Darstellung.
+**Unabhängiges Community-Projekt für MeshCore in Luxemburg und der Region, keine offizielle LU-Alert-App.** Das [offizielle Warn- und Informationssystem LU-Alert](https://lu-alert.lu/de.html) wird von den öffentlichen Behörden betrieben. MeshCore-Textnachrichten können verspätet eintreffen oder verloren gehen. Keine Gewähr für Zustellung, Vollständigkeit oder Aktualität; kein Ersatz für offizielle Warnungen oder Notfallkommunikation.
 
-**Vierstellige Bildschirm-PIN für Wio und Heltec.** Menü → Bildschirmsperre → PIN erstellen. Ändern/Entfernen mit bisherigem Code; Neustart erhält die Sperre. [Bedienung und Tests](docs/SCREEN-PIN.md). Heltec dev4 bleibt Vorschau; neue PIN-Hardwaretests ausstehend.
+**Wio RC8: zehn Kanalmenüs für Inbox, Live RX und Quick TX.** #public · #test · #lu-alert · #trafic · #luxembourg · #hammradio · #bot · #emergency · #saarland · #trier. Die manuelle RX-Auswahl und die Sendemenüs verwenden dieselbe Liste; die Inbox kann auch alle Kanäle anzeigen. Die Namen sind Menüvorlagen für die eigene Tracker-Konfiguration, keine exportierten Kanalprofile oder Schlüssel.
 
-**Aktiver Zero-Hop-Scan: Wio RC5 / Heltec dev3 (Vorschau).** [Direkt ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scan) · [Bedienung und Airtime](docs/DISCOVERY.md). Expliziter Start, mindestens 30–35 Sekunden, höchstens zwei Minuten; neue Hardwaretests UNTESTED.
+[Kanalauswahl im Browser ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=channels) · [Wio-Downloads](https://lu-alert.nosrv.eu/downloads/?board=wio) · [Kanäle und Bedienung](docs/CHANNELS.md) · [Quick-TX-Vorlagen](docs/COMMANDS.md).
 
-**Neu: Wio RC4 / Heltec dev2 – Funkmonitor-Vorschau.** [Repeater live direkt öffnen](https://lu-alert.nosrv.eu/simulator/?demo=repeaters) · [Pegel / Rauschen](https://lu-alert.nosrv.eu/simulator/?demo=noise) · [Bedienung](docs/RADIO-LIVE.md).
+**Laufschrift und vierstellige PIN bleiben erhalten.** Lange Nachrichten, Absender und Repeater-Namen laufen nach einer Lesepause nach links; kurze Texte stehen still. Die PIN wird im Menü „Bildschirmsperre“ erstellt, geändert oder entfernt.
 
-**Version 0.2 · v0.2.0-lu-alert-rc3 · eigenständige öffentliche Ausgabe.** Klassische OLED-Menüs und animiertes LU-Alert-Logo, ohne Pixelbegleiter oder Board-Charakterauswahl. Eigene Mac-App und eigene DFU-Datei. Keine persönliche Tracker-Konfiguration enthalten.
-
-| Kanalmenü | Vorlagen / Status |
-|---|---|
-| #Public | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #Test | Ping · Test · Hop |
-| #LU-Alert | meteo: Nutzerbeobachtung bestätigt; hochwasser: unbestätigt; RAD/Warnungen ohne bekannte Syntax gesperrt |
-| #trafic | traffic · info · A1 · A3 · A4 · A6 · A7 · A13: gewünschte Texte, Parser-Syntax unbestätigt |
-| #luxembourg | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #saarloorlux | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #trier | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #bot | Menü vorhanden, bis zur bekannten Befehlssyntax gegen Versand gesperrt |
-
-Die Schreibweise #saarloorlux entspricht dem Auftrag. Sie muss dem tatsächlich konfigurierten Kanalnamen entsprechen; keine stille Umleitung auf einen anderen Namen oder Index. Der produktive Bot-Parser liegt nicht vor. Es werden keine Kommandos erfunden und keine Serveränderungen vorgenommen. Acht Einträge werden auf zwei Seiten angezeigt. Die Tastensperre zeigt nur Titel und Pixel-Schloss.
+**Heltec bleibt dev4 · Vorschau.** Die bestehende PRG-Version mit acht Kanalmenüs, PIN und bisheriger Darstellung bleibt unverändert. Die neue Wio-Kanalauswahl ist keine Heltec-Freigabe. Kein Gerät wurde geflasht.
 
 [Website](https://lu-alert.nosrv.eu) · [GitHub](https://github.com/levelstation/lu-alert) · [Testbericht](TEST-REPORT.md) · [Heltec-Roadmap](docs/ROADMAP.md)
 
@@ -29,7 +16,7 @@ Die Schreibweise #saarloorlux entspricht dem Auftrag. Sie muss dem tatsächlich 
 
 Überlange Textfelder werden vollständig lesbar: Der Anfang steht zunächst 1,2 Sekunden, dann läuft der Text nach links. Empfangsalter, Signalpegel und Symbole daneben behalten ihren Platz. Neue Nachrichten und eine andere Auswahl starten den Text wieder von vorn. Empfang und GPS laufen weiter; für die Anzeige entstehen keine zusätzlichen Funkpakete.
 
-[Nachrichten und lange Repeater-Namen ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scroll) · [Firmware, Mac-Simulator und Quellpaket](docs/downloads/text-scroll/) · [Prüfsummen](docs/downloads/text-scroll/SHA256SUMS).
+[Nachrichten und lange Repeater-Namen ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scroll) · [Firmware, Mac-Simulator und Quellpaket](https://lu-alert.nosrv.eu/downloads/?board=wio) · [Prüfsummen](docs/downloads/text-scroll/SHA256SUMS).
 
 ![Wio: lange Nachricht im Simulator](docs/assets/wio-scroll-message.png)
 
@@ -41,7 +28,7 @@ Die neue Laufschrift wurde in Software und Browser-Simulation geprüft. Der phys
 
 Menü → **Bildschirmsperre** → **PIN erstellen**. Vier Ziffern wählen und wiederholen; zum Ändern oder Entfernen den bisherigen Code eingeben. Auf dem Wio werden Joystick und ENTER benutzt, auf dem Heltec kurze und längere PRG-Tastendrücke. Ein Neustart erhält die gespeicherte Sperre.
 
-[PIN-Downloads und Mac-Simulatoren](docs/downloads/pin/) · [Bedienung](docs/SCREEN-PIN.md) · [Softwareprüfungen](docs/SCREEN-PIN-TEST-REPORT.json). Wio aktuell: **v0.2.0-lu-alert-rc7**, [Laufschrift-Downloads](docs/downloads/text-scroll/). Heltec: **dev4 · Vorschau**, R2/R8; physische Tests der neuen PIN-Funktion stehen aus. Vorherige Downloads bleiben erhalten.
+[PIN-Downloads und Mac-Simulatoren](docs/downloads/pin/) · [Bedienung](docs/SCREEN-PIN.md) · [Softwareprüfungen](docs/SCREEN-PIN-TEST-REPORT.json). Wio aktuell: **v0.2.0-lu-alert-rc8**, [Laufschrift-Downloads](https://lu-alert.nosrv.eu/downloads/?board=wio). Heltec: **dev4 · Vorschau**, R2/R8; physische Tests der neuen PIN-Funktion stehen aus. Vorherige Downloads bleiben erhalten.
 
 ## Technik und Grenzen
 
@@ -57,7 +44,7 @@ Radio und Live Radio / GPS zeigen `Noise est: … dBm`. Das ist der bereits vom 
 
 GPS-Kurs ist ein Bewegungskurs aus frischen gültigen RMC-Daten, kein Magnetkompass. Ohne Fix, im Stillstand und nach acht Sekunden werden keine aktuellen Richtungen vorgetäuscht. UTC und Anzeigezeit bleiben getrennt; Europe/Luxembourg ist Standard.
 
-Die bisherige Gerätebasis einschließlich Funk, BLE, Display und Bootloader wurde vom Nutzer bestätigt. Der genaue alte Build wurde nicht angegeben. Neue RC3-Dateien sind auf echter Hardware UNTESTED. Es wurde kein Gerät geflasht, gelöscht, zurückgesetzt oder umkonfiguriert. Die neue App verhindert automatische Dateisystemformatierung bei einem Mountfehler.
+Die aktuelle Wio-Ausgabe ist eine Software-Vorschau; der physische Test der neuen Kanalauswahl steht noch aus. Es wurde kein Gerät geflasht. Bei einem Dateisystem-Mountfehler wird nicht automatisch formatiert.
 
 ## Build und Start
 
@@ -95,7 +82,7 @@ python3 -m http.server 4176 --directory docs
 
 Dann `http://localhost:4176/simulator/` öffnen. Für die native Vergleichsreferenz ist ein C++17-Compiler erforderlich. SDK-Installation: im offiziellen emsdk-Checkout `./emsdk install 7.0.1`, `./emsdk activate 7.0.1 --embedded`, dann `source ./emsdk_env.sh`. Kein SDK und keine Zugangsdaten sind im Projekt enthalten. Die Ausgabe ist statisch hostbar. Build- und Quellprüfsummen stehen in `docs/simulator/BUILD-MANIFEST.json`.
 
-1272 native/WASM-Pixelvergleiche bestanden; Details in [Web-Testbericht](docs/simulator/TEST-REPORT.md). Der WebAssembly-Heap ist auf 16 MiB begrenzt; der OLED-Framebuffer bleibt 1024 Byte. Dies ist keine Emulation des nRF52840, Funkchips oder Bootloaders.
+Aktuelle native/WASM-Pixelvergleiche sowie PIN-, Laufschrift- und Kanalfilter-Prüfungen dokumentiert im [Web-Testbericht](docs/simulator/TEST-REPORT.md). Der WebAssembly-Heap ist auf 16 MiB begrenzt; der OLED-Framebuffer bleibt 1024 Byte. Dies ist keine Emulation des nRF52840, Funkchips oder Bootloaders.
 
 ## Heltec-V4.3-Vorschau
 

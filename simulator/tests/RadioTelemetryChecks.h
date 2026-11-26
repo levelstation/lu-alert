@@ -22,7 +22,11 @@ template<class Check> void telemetry(Check require){using namespace meshis;
  t={};t.notePacket(&packet,hash,8,-55,0);uint8_t wrongHash[8]={2};t.beginAdvert(&packet,wrongHash,8,true,1);t.observeValidatedAdvert(key,"hash mismatch",true,1);t.endAdvert();require(!t.repeater(0,1)->hasDirect&&t.repeater(0,1)->lastWasDirect,"Mismatched packet hash yields unknown direct RSSI");
  t={};t.notePacket(&packet,hash,8,-55,0);t.beginAdvert(&packet,hash,8,true,10001);t.observeValidatedAdvert(key,"expired metadata",true,10001);t.endAdvert();require(!t.repeater(0,10001)->hasDirect,"Expired metadata is not reused");
  t={};for(unsigned n=0;n<12;n++){uint8_t k[32]={};k[0]=n;observe(k,true,-100+n,n*1000);}require(t.repeaterCount()==8,"Only eight repeater entries allocated");for(unsigned n=0;n<8;n++)require(t.repeater(n,12000)->key[0]>=4,"Oldest entry evicted");
+#if defined(LU_ALERT_RX_CHANNELS)
+ require(sizeof(RuntimeTelemetry)<=2048&&sizeof(QuickTx)<=2560,"Bounded Wio-LU RX-channel state");
+#else
  require(sizeof(RuntimeTelemetry)<=2048&&sizeof(QuickTx)<=2304,"Bounded shared state");
+#endif
  for(int w:{400,512,900,1600,2400})for(int h:{240,400,700,1200})for(int zoom:{0,4,8,12}){const auto v=fitOLED(w,h,zoom);require(v.x>=0&&v.y>=0&&v.x+v.width<=w&&v.y+v.height<=h&&v.width==128*v.scale&&v.height==64*v.scale,"Resizing and zoom preserve every framebuffer pixel at integer scale");require(abs(2*v.x+v.width-w)<=1&&abs(2*v.y+v.height-h)<=1,"OLED remains centered");}
 
  RuntimeTelemetry full;uint8_t fullKey[32]={0x12,0x34},fullHash[8]={3};unsigned handle=1;

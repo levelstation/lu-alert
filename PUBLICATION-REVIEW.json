@@ -1,6 +1,6 @@
 {
   "date": "2026-11-26",
-  "scope": "Wio text marquee, current browser simulation and versioned Wio downloads",
+  "scope": "LU-Alert Wio ten channel menus, Inbox filter and independent community attribution",
   "known_personal_markers": 0,
   "protocol_changed": false,
   "old_downloads": "RETAINED",
@@ -9,10 +9,11 @@
   "pin_default": "DISABLED; no preconfigured code",
   "pin_storage": "salted verifier; separate from BLE PIN",
   "heltec": "Existing dev4 PREVIEW unchanged",
-  "source_sha256sums": "b5da4b1ba77966cf19c9e1be91ed41f56cf1b9e4ad79ff86f7e72edbba94331d",
+  "source_sha256sums": "183177273d6b657640a21a4a3915acf0270e9e9d83c5b730d7de8bacf4fbd438",
   "browser_pin_test": "PASS Wio and Heltec; native/WASM pixel parity",
   "source_archive_scope": "firmware and simulator only; website/environment files excluded",
   "source_archive_privacy": "PASS zero findings",
-  "wio_version": "RC7",
-  "browser_scroll_test": "PASS Wio; 72 native/WASM comparisons and 60 functional groups"
+  "wio_version": "RC8",
+  "browser_scroll_test": "PASS Wio; 72 native/WASM comparisons and 60 functional groups",
+  "browser_channels_test": "See docs/simulator/RX-CHANNELS-TEST-RESULT.json; native/WASM framebuffer parity"
 }

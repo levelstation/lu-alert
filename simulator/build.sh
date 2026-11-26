@@ -34,7 +34,7 @@ python3 - <<'PLIST'
 import plistlib,os
 from pathlib import Path
 path=Path(os.environ['MESHIS_APP'])/'Info.plist'
-with path.open('wb') as f:plistlib.dump({'CFBundleExecutable':'meshis-simulator','CFBundleIdentifier':'org.lualert.simulator','CFBundleName':'LU Alert Simulator','CFBundlePackageType':'APPL','CFBundleShortVersionString':'0.2.0','CFBundleVersion':'2026112301','LSMinimumSystemVersion':'14.0','NSHighResolutionCapable':True},f)
+with path.open('wb') as f:plistlib.dump({'CFBundleExecutable':'meshis-simulator','CFBundleIdentifier':'org.lualert.simulator','CFBundleName':'LU Alert Simulator','CFBundlePackageType':'APPL','CFBundleShortVersionString':'0.2.0','CFBundleVersion':('2026112301' if os.environ.get('MESHIS_HELTEC_PRG')=='1' else '2026112608'),'LSMinimumSystemVersion':'14.0','NSHighResolutionCapable':True},f)
 PLIST
 if [ "${MESHIS_HELTEC_PRG:-0}" = 1 ]; then
  python3 - <<'HELTEC_PLIST'

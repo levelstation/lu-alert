@@ -28,6 +28,10 @@ public:
   bool locked()const;int lockPhase()const;void menuLevel(bool pressed);
   void receiveSimulated(const char* channel,const char* sender,const char* text,bool authenticated=false,bool expected=false,bool correlated=false);
   void setSimChannel(unsigned slot,const char* name);void setSimNoise(int dbm);void setSimTxFailure(bool fail);
+  void setSimChannelEpoch(unsigned slot,uint32_t epoch);
+  static int rxChannelCount();static const char* rxChannelName(int index);
+  int rxFilter()const;unsigned rxVisibleCount()const;bool rxFilterAvailable()const;
+  void setRxFilter(int filter);void showRxChannelsDemo();
   std::string lastSimulatedText()const;std::string lastSimulatedChannel()const;
   unsigned rxCount()const;int quickPage()const;void setSimMotion(bool fix,long course,long speed,uint32_t age);
 

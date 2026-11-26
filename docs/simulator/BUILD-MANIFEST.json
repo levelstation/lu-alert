@@ -1,5 +1,5 @@
 {
-  "version": "v0.2.0-lu-alert-rc7",
+  "version": "v0.2.0-lu-alert-rc8",
   "format": "Shared C++ simulator compiled to WebAssembly",
   "compiler": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 7.0.1 (ac0578743420bcbe9a4f77d0b6599c25f8d43702)",
   "framebuffer_bytes": 1024,
@@ -11,6 +11,10 @@
   "device_access": false,
   "screen_pin": true,
   "text_scroll": true,
+  "rx_channel_selector": true,
+  "rx_channel_filter": "All or configured public channel menu; shared C++ Inbox",
+  "rx_channel_demo_query": "?demo=channels",
+  "cache_graph": "lu-channels-20261126-v1",
   "text_scroll_start_pause_ms": 1200,
   "text_scroll_end_pause_ms": 1200,
   "text_scroll_pixels_per_second": 20,
@@ -18,8 +22,8 @@
   "live_radio": true,
   "hardware_tests": "UNTESTED for new Wio build",
   "files": {
-    "core.mjs": "a68bdc735a4f442f550755d3824240270f9967b1ce3f76ac9c436132f1746c34",
-    "core.wasm": "7db7454fc4c1046d83898ea58f1eda42d44219c81250b0b337392fb27a8250ed"
+    "core.mjs": "22ab0b653858a6802283087d42e9a74d52c8cc0da6b264d817c9533f8cdbcc36",
+    "core.wasm": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
   },
   "shared_sources": {
     "firmware/core/TextMarquee.h": "183a1e6f39e9cfc49fbd03d6817a74beb221f30464707323894f24de368bc78f",
@@ -27,13 +31,14 @@
     "firmware/core/ScreenPin.h": "56482a38c9237e267bf68bc5c2f74259ffb6008ca99f6f63d834deabfb0acddb",
     "firmware/core/PrgInput.h": "5c4ef08927adf1f9f803cc0b2ae77af0b5bfe4b45ffe6a58dc06b16493b06114",
     "firmware/ui/ScreenPinRenderer.h": "10c1de33d37078d0f6ea7f9556c58a37373de1320f4c29e2c59481e032358f51",
-    "simulator/web/Bridge.cpp": "1f9f40b3eddb6df8fa46b92147e0b8706f5b97959d6bf8c2ddd724abd514f328",
-    "firmware/ui/TxProfile.h": "24ed1bbe268400c6c33a1016f4d810aa1b2700088891485d308abc4dc5bbf223",
+    "simulator/web/Bridge.cpp": "372419e41c699815654812191f7050bffd422b383c3887d6fa7be5d5c6b43616",
+    "firmware/ui/TxProfile.h": "e97854fcf5c4174b1ce2720c9926097a3489812f30878d0ac5406d37d677d1ee",
     "firmware/ui/MeshiSprites.h": "d16434fc9d62257c8e0b254b9b9768a0434b4fa1853e62818e5eca72bc904abb",
-    "simulator/src/Simulator.cpp": "07aadaf16a016c93491cad120500107a708405f00932b93d2b1f1c1e113e4951",
-    "simulator/src/FirmwareAdapter.h": "54fc50f69cc469834df5eef1c5a76307845c399af036009c14b3555b855ec9bb",
+    "simulator/src/Simulator.cpp": "acd9eed62b924f86eab8ef2f5353df52395ff0eec88bbe63f660c3c8fef9037f",
+    "simulator/src/Simulator.h": "eec18a0e4ce90da248c13a4f3ee0529faede2ae47cb79943f444947bc5719ac9",
+    "simulator/src/FirmwareAdapter.h": "b4e33eea056fc2e15a721b03e0b3eaf189da4ffe332d1dc2af49b6049881e33c",
     "firmware/ui/FirmwareScreens.h": "f211b33823e780aeb6a21d209e3f40cf41a46ee289898bbcda204104ad2b3d05",
-    "firmware/ui/QuickTx.h": "f04497c7dda37697dd41e27d958c8443eddca767533f242ca5494f03f0be13dc",
+    "firmware/ui/QuickTx.h": "9290e45c7f5c9021d539a56cc419c828143fcb9409cc44a09b2a511de118490a",
     "firmware/ui/MenuActions.h": "962e9fa6a4037136f7aa9b8af3917041a4de7c841379c32572c475e5552b480f",
     "firmware/core/RuntimeTelemetry.h": "b12fd313b0351ef73a30cd2a383ea34eec527ab4da596b663547d25c07e2c10f",
     "firmware/core/ActiveDiscovery.h": "d66c907a7eed47ecc1c4083e656d2c134442a1c210e9966a7676863721081820",
@@ -41,12 +46,18 @@
     "firmware/ui/OledText.h": "11d187a5bcdbc79372d8247da133c4ebc0692b25c754685ae30837e5e29fd4c2",
     "firmware/core/KeyLock.h": "8e82cca6f3f342e6391cbc9b623c8cb198783b38d65ac45071e464c74b8e73de",
     "firmware/ui/LockRenderer.h": "07a0ee1bebadfff8bb079e5cc593e83c470b96ade394111a2c959b319996ee0d",
-    "firmware/display/FramebufferDisplay.h": "dfbbaed260e8daec23e7708e9883c04c487cae7da8a1d6cbe9dc26606c1bf960",
-    "simulator/src/Simulator.h": "04ad9c75ad266a7b8383ddaeb1ca9ae5dd79bb5f0a7804303e3a9651fcfc375e"
+    "firmware/display/FramebufferDisplay.h": "dfbbaed260e8daec23e7708e9883c04c487cae7da8a1d6cbe9dc26606c1bf960"
   },
   "hardware_boundary_sources": {
     "firmware/core/MeshCoreDiscovery.h": "3b31865fb6d277dfba9c6773d6ea624ee393c7dd998293237300e98ee98fbc5a",
     "firmware/core/DiscoveryQueueGuard.h": "dcb1ffce8a2e22d9218fc8665ce68f3bf47dcd93e462aba35c2f2430c6153259"
+  },
+  "presentation_assets": {
+    "index.html": "685959d39c5665fd2698875baea43d46ed100610be99d9ee6de786f1430ed0f6",
+    "simulator.mjs": "d6e384103bb0c4de2a161d16edac225e2b94924a4fe425c784455239d6a8a78b",
+    "simulator.css": "6ff0d23372a487ba5da253ba95d80af6bf8155b7e4157a6ebc48913a1a80e1d4",
+    "console-layout.mjs": "e1bbbcb0977a993b388af668a0e0bb0b3ca4f22e9144af65ca8716f86d741aa2",
+    "radio-demo.mjs": "6429c97f00beeab19b31ffc6251623f3fea774e26da353b4d6d60f40c9eea27c"
   },
   "pin_tests": {
     "result": "PASS",
@@ -56,7 +67,7 @@
     "pin_value_exports": false,
     "device_access": false,
     "fixed_wasm_heap": 16777216,
-    "wasm_sha256": "7db7454fc4c1046d83898ea58f1eda42d44219c81250b0b337392fb27a8250ed"
+    "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
   },
   "text_scroll_tests": {
     "result": "PASS",
@@ -78,13 +89,71 @@
     ],
     "device_access": false,
     "hardware_flashed": false,
-    "wasm_sha256": "7db7454fc4c1046d83898ea58f1eda42d44219c81250b0b337392fb27a8250ed"
+    "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
   },
-  "presentation_assets": {
-    "index.html": "a01fb5ad51da76b76d0094e6b1956a4eeaa3616f86fbc2f1a6891455b5340748",
-    "simulator.mjs": "e547e9061ef71b76b21400ac301616acbc85d357a546ca0208a9325c280ac6b4",
-    "simulator.css": "b000b6038315637f382a0c90d6198a415db4775574356697764bb03a06b0dccb"
-  },
-  "demo_query": "?demo=scroll",
-  "heltec_assets": "unchanged from existing PIN dev4 preview"
+  "rx_channel_tests": {
+    "result": "PASS",
+    "scope": "LU-Alert Wio shared C++ RX channel chooser and filter",
+    "channel_names": [
+      "#public",
+      "#test",
+      "#lu-alert",
+      "#trafic",
+      "#luxembourg",
+      "#hammradio",
+      "#bot",
+      "#emergency",
+      "#saarland",
+      "#trier"
+    ],
+    "channel_count": 10,
+    "native_wasm_framebuffer_comparisons": 33,
+    "functional_groups": 28,
+    "all_visible_count": 8,
+    "filter_counts": [
+      {
+        "name": "#public",
+        "count": 1
+      },
+      {
+        "name": "#test",
+        "count": 1
+      },
+      {
+        "name": "#lu-alert",
+        "count": 1
+      },
+      {
+        "name": "#trafic",
+        "count": 1
+      },
+      {
+        "name": "#luxembourg",
+        "count": 1
+      },
+      {
+        "name": "#hammradio",
+        "count": 1
+      },
+      {
+        "name": "#bot",
+        "count": 0
+      },
+      {
+        "name": "#emergency",
+        "count": 0
+      },
+      {
+        "name": "#saarland",
+        "count": 1
+      },
+      {
+        "name": "#trier",
+        "count": 1
+      }
+    ],
+    "device_access": false,
+    "hardware_flashed": false,
+    "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
+  }
 }

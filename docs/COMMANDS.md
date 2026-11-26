@@ -1,53 +1,54 @@
-# LU-Alert · MeshCore Luxembourg
+# LU-Alert für MeshCore · Kanäle und Bedienung
 
-**Version 0.2 · v0.2.0-lu-alert-rc3 · eigenständige öffentliche Ausgabe.** Klassische OLED-Menüs und animiertes LU-Alert-Logo, ohne Pixelbegleiter oder Board-Charakterauswahl. Eigene Mac-App und eigene DFU-Datei. Keine persönliche Tracker-Konfiguration enthalten.
+**Unabhängiges Community-Projekt für MeshCore in Luxemburg und der Region, keine offizielle LU-Alert-App.** Das [offizielle Warn- und Informationssystem LU-Alert](https://lu-alert.lu/de.html) wird von den öffentlichen Behörden betrieben. MeshCore-Textnachrichten können verspätet eintreffen oder verloren gehen. Keine Gewähr für Zustellung, Vollständigkeit oder Aktualität; kein Ersatz für offizielle Warnungen oder Notfallkommunikation.
 
-| Kanalmenü | Vorlagen / Status |
-|---|---|
-| #Public | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #Test | Ping · Test · Hop |
-| #LU-Alert | meteo: Nutzerbeobachtung bestätigt; hochwasser: unbestätigt; RAD/Warnungen ohne bekannte Syntax gesperrt |
-| #trafic | traffic · info · A1 · A3 · A4 · A6 · A7 · A13: gewünschte Texte, Parser-Syntax unbestätigt |
+## Wio RC8: zehn Kanalmenüs
+
+Die manuelle Auswahl in Inbox und Live RX sowie Quick TX verwenden dieselben zehn Kanalnamen, in dieser Reihenfolge. In der Inbox kann außerdem kanalübergreifend gelesen werden. Quick TX zeigt die zehn Kanäle auf drei Seiten: vier, vier und zwei. Die RX-Auswahl enthält zusätzlich „Alle Kanäle“ und damit elf Einträge.
+
+| Wio-Kanalmenü | Quick-TX-Vorlagen |
+| --- | --- |
+| #public | Hallo · Moin · Wie geht’s? · ACK 75 |
+| #test | Ping · Test · Hop |
+| #lu-alert | meteo · hochwasser; RAD und Warnungen ohne hinterlegten Text gesperrt |
+| #trafic | traffic · info · A1 · A3 · A4 · A6 · A7 · A13 |
 | #luxembourg | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #saarloorlux | Hallo · Moin · Wie geht’s? · ACK 75 |
+| #hammradio | Hallo · Moin · Wie geht’s? · ACK 75 |
+| #bot | Platzhalter ohne Sendetext; Versand gesperrt |
+| #emergency | Hallo · Moin · Wie geht’s? · ACK 75 |
+| #saarland | Hallo · Moin · Wie geht’s? · ACK 75 |
 | #trier | Hallo · Moin · Wie geht’s? · ACK 75 |
-| #bot | Menü vorhanden, bis zur bekannten Befehlssyntax gegen Versand gesperrt |
 
-Die Schreibweise #saarloorlux entspricht dem Auftrag. Sie muss dem tatsächlich konfigurierten Kanalnamen entsprechen; keine stille Umleitung auf einen anderen Namen oder Index. Der produktive Bot-Parser liegt nicht vor. Es werden keine Kommandos erfunden und keine Serveränderungen vorgenommen. Acht Einträge werden auf zwei Seiten angezeigt. Die Tastensperre zeigt nur Titel und Pixel-Schloss.
+Das sind Menüvorlagen für die vorhandene Tracker-Konfiguration, keine mitgelieferten Kanäle oder Schlüssel. Fehlt ein passender Kanal oder ist seine Zuordnung mehrdeutig, wird der Versand blockiert. Es werden keine Kanalprofile angelegt oder ersetzt.
 
+`#emergency` ist ein Kanalname. Er stellt keine Notruffunktion her und garantiert keine Überwachung oder Antwort durch Hilfsdienste.
 
-## Technik und Grenzen
+## Inbox und Live RX
 
-Ziel ist der ursprüngliche Seeed Studio Wio Tracker L1 Pro OLED: 128 × 64 Pixel, ein Bit und ein gemeinsamer 1024-Byte-Framebuffer. Firmware und Mac-App verwenden dieselben Menü-, Quick-TX-, RX-, Sperr- und Displayklassen. Die App ersetzt Hardware durch ausdrücklich simulierte lokale Adapter. Bestehende MeshCore-/BLE-/Funkprotokolle bleiben erhalten.
+[Ausführliche RX-Kanalbedienung](CHANNELS.md).
 
-Die Menünamen sind keine gespeicherten Kanalprofile. Ein Eintrag wird zur Laufzeit anhand des eindeutigen vorhandenen Namens gesucht und vor dem Senden einschließlich Schlüssel erneut geprüft. Die Anwendung erstellt, ändert und löscht keine Kanäle oder Schlüssel. Fehlt der passende Name, erscheint CHANNEL NOT CONFIGURED. Bereits bestehender Empfang und Companion-Funktionen bleiben erhalten.
+Im Hauptmenü „Messages“ mit ENTER öffnen und „Live RX / Inbox“ wählen. Die Ansicht startet mit „Alle Kanäle“. Dort öffnet ENTER die RX-Kanalauswahl: mit dem Joystick wählen, mit ENTER übernehmen oder mit MENU abbrechen. „Alle Kanäle“ zeigt die lokal gespeicherten Nachrichten kanalübergreifend. Die Kanalwahl ändert nur die Ansicht; Empfang auf anderen korrekt eingerichteten Kanälen läuft weiter. Sie stimmt das Funkmodul nicht um.
 
-Quick TX: Kanal → Vorlage → exakter Text → Enter. DEVICE ACCEPTED bedeutet lokale Annahme, kein Empfangs-ACK. Keine automatischen Wiederholungen. Die letzten acht RX-Texte bleiben in begrenztem RAM, Auf/Ab scrollt, Links/Rechts blättert. Gruppen-Absender werden nicht allein anhand eines Namenspräfixes als verifizierter Bot ausgegeben.
+Nach einer lokal angenommenen Quick-TX-Nachricht öffnet ENTER die RX-Ansicht desselben Kanals. Eine leere Ansicht bedeutet, dass im lokalen Nachrichtenpuffer keine passende Nachricht liegt. Sie beweist weder, dass der Kanal still ist, noch dass eine Anfrage angekommen ist. Der Puffer enthält höchstens acht Nachrichten und ist kein dauerhaftes Archiv.
 
-Drei entprellte MENU-Drücke innerhalb von 1200 ms sperren oder entsperren. Einzeldrücke werden bis zum Ende des Zeitfensters zurückgehalten. Zwei MENU-Drücke innerhalb von 1200 ms schalten Sound genau einmal an oder aus, ohne Menüaktion. Der Doppelklick wartet das vollständige Dreifachklick-Fenster ab; ein dritter Druck sperrt/entsperrt ohne Tonänderung. SOUND ON/OFF bestätigt den Zustand. Während der Sperre wird auch der Sound-Doppelklick ignoriert. Während der Sperre sind Navigation und neue Quick-TX-Aufträge blockiert; RX, GPS und Hintergrundfunktionen laufen weiter. Normaler Reset erhält Einstellungen und die bisherigen Dateischlüssel.
+## Quick TX
 
-Radio und Live Radio / GPS zeigen `Noise est: … dBm`. Das ist der bereits vom MeshCore-Treiber geschätzte Grundrauschpegel, keine neue Messung durch das Menü. Die Anzeige liest nur `getNoiseFloor()`; sie startet weder Scan noch Kalibrierung und ändert keine Funkparameter. Vor einer gültigen Schätzung erscheint `not ready`. Der vorhandene Treiber mittelt 64 ruhige Empfangsproben und begrenzt die Schätzung nach unten auf -120 dBm. Der Wert kann nach einer Kalibrierung unverändert bleiben und ist kein laufender Spektrumanalysator. RSSI/SNR des letzten Pakets sind davon getrennte Werte.
+Kanal wählen → Vorlage wählen → exakten Text prüfen → mit ENTER senden. Die Texte der Botvorlagen sind gewöhnliche MeshCore-Nachrichten. Eine Antwort oder eine bestimmte Funktion des erreichbaren Bots wird nicht zugesichert. Ein fehlender Befehlstext bleibt gesperrt.
 
-GPS-Kurs ist ein Bewegungskurs aus frischen gültigen RMC-Daten, kein Magnetkompass. Ohne Fix, im Stillstand und nach acht Sekunden werden keine aktuellen Richtungen vorgetäuscht. UTC und Anzeigezeit bleiben getrennt; Europe/Luxembourg ist Standard.
+„DEVICE ACCEPTED“ bestätigt nur die lokale Annahme, keine Zustellung und keine Bot-Antwort. Es gibt keine automatischen Wiederholungen. Die Tastensperre blockiert neue Sendungen; Empfang und Hintergrundfunktionen bleiben aktiv.
 
-Die bisherige Gerätebasis einschließlich Funk, BLE, Display und Bootloader wurde vom Nutzer bestätigt. Der genaue alte Build wurde nicht angegeben. Neue RC3-Dateien sind auf echter Hardware UNTESTED. Es wurde kein Gerät geflasht, gelöscht, zurückgesetzt oder umkonfiguriert. Die neue App verhindert automatische Dateisystemformatierung bei einem Mountfehler.
+## Lesen und Sperren
 
-## Build und Start
+Überlange Wio-Texte laufen nach kurzer Lesepause nach links. Kurze Texte bleiben stehen. Auf/Ab bewegt die Nachrichtenansicht, Links/Rechts blättert durch die verfügbaren lokalen Nachrichten. Ein anderer Eintrag beginnt wieder am Textanfang.
 
-Apple Silicon, macOS 14+, Apple Command Line Tools. Keine zusätzliche GUI-Bibliothek nötig; bestehende AppKit-App und vendorte Grafikquellen.
+Zweimal MENU innerhalb von 1,2 Sekunden schaltet Sound an oder aus. Dreimal MENU sperrt oder entsperrt. Eine optionale vierstellige PIN wird unter „Bildschirmsperre“ erstellt, geändert oder entfernt. [PIN-Bedienung](SCREEN-PIN.md).
 
-```sh
-sh simulator/build.sh
-./meshis-simulator
-./meshis-simulator --self-test build/screenshots
-SIM_SANITIZE=1 sh simulator/build.sh
-./build/meshis-simulator-asan --self-test build/asan
-```
+## Heltec bleibt eine eigene Vorschau
 
-Pfeile = Joystick, Enter = Joystick-Druck, Escape = MENU. 2× Escape/MENU in 1,2 s schaltet Sound an/aus; 3× sperrt/entsperrt. Der Doppelklick wird nach Ablauf des 1200-ms-Fensters ausgeführt. Cmd+R setzt nur die Simulation zurück. Der Simulator öffnet keine Geräteschnittstelle.
+Die vorhandene Heltec-dev4-Vorschau mit PRG-Bedienung und PIN bleibt unverändert. Sie verwendet weiterhin die bisherigen acht Kanalmenüs: #Public, #Test, #LU-Alert, #trafic, #luxembourg, #saarloorlux, #trier und #bot. Die neue Zehnerliste und manuelle RX-Kanalauswahl dieser Wio-Ausgabe werden nicht als Heltec-Funktion zugesagt. [Heltec-Bedienung](HELTEC-V4.3.md).
 
-Firmware: Python-Umgebung mit PlatformIO 6.1.19 und pyelftools, dann `sh tools/build_firmware.sh`. Das Skript kompiliert ausschließlich und validiert BIN, UF2, echte Anwendungs-DFU, CRC und Speicherbereiche. Kein Upload-Schritt. Grundlage: MeshCore-Commit 75b04ef06def54b348400cb1b138afb6749ffd4f, S140 7.3.0 / FWID 0x0123. Abhängigkeiten mit Versionsbereichen und Compiler-Zeitstempel verhindern eine allgemeine Zusage bitidentischer Neubauten.
+## Ausprobieren
 
-UF2-Family-ID 0xADA52840 ist keine Board-ID. Die individuelle INFO_UF2-Board-ID und installierte SoftDevice-Version wurden nicht ausgelesen. E-Ink und Pro 1W sind nicht unterstützt. Der individuelle OLED-Controller ist nicht anhand einer Panelkennzeichnung nachgewiesen.
+[Wio-Kanalauswahl im Browser](https://lu-alert.nosrv.eu/simulator/?demo=channels) · [Wio-Downloads](https://lu-alert.nosrv.eu/downloads/?board=wio) · [Heltec-Vorschau](https://lu-alert.nosrv.eu/simulator/heltec/?demo=pin).
 
-[Offizielle Hardwaredokumentation](https://wiki.seeedstudio.com/wio_tracker_l1_node/) · MeshCore MIT, siehe LICENSE und vendor/meshcore/LICENSE · Adafruit GFX BSD, siehe simulator/vendor/adafruit-gfx/license.txt. Unabhängiges Community-Projekt.
+Alle Browserereignisse sind lokale Demodaten, keine Funk-, GPS- oder BLE-Verbindung. Wio RC8 und Heltec dev4 sind Vorschauen; die aktuellen Änderungen wurden nicht auf ein Gerät geflasht.

@@ -3,6 +3,7 @@ from pathlib import Path
 import subprocess,shutil,hashlib
 root=Path(__file__).resolve().parents[1];u=root/'upstream'
 subprocess.run(['python3',str(root/'tools/setup_firmware.py')],check=True)
+subprocess.run(['python3',str(root/'tools/setup_rx_channels_ui.py'),'strip'],check=True)
 subprocess.run(['python3',str(root/'tools/setup_text_scroll_ui.py'),'strip'],check=True)
 subprocess.run(['python3',str(root/'tools/setup_screen_pin_ui.py'),'strip'],check=True)
 patch=root/'patches/heltec-prg.patch'
@@ -17,3 +18,5 @@ print('Prepared R2 and R8 compile targets. Exact physical revision remains UNVER
 subprocess.run(['python3',str(root/'tools/setup_screen_pin_ui.py'),'apply'],check=True)
 
 subprocess.run(['python3',str(root/'tools/setup_text_scroll_ui.py'),'apply'],check=True)
+
+subprocess.run(['python3',str(root/'tools/setup_rx_channels_ui.py'),'apply'],check=True)

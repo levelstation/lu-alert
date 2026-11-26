@@ -85,3 +85,4 @@ footer{margin-top:20px}
   .workspace{grid-template-columns:minmax(0,1fr) 230px;padding:8px;gap:6px 12px}
 }
 @media(max-width:360px){.lab{width:calc(100% - 16px)}.workspace{padding:8px}.console-toolbar{gap:6px}.console-toolbar label{gap:4px}.profile-nav{gap:6px}.profile-nav a{font-size:14px}}
+@media(max-width:420px){body[data-profile="lu-alert"] .console-toolbar{flex-direction:column;gap:6px}body[data-profile="lu-alert"] .console-toolbar label{width:100%;flex:auto}body[data-profile="lu-alert"] .console-toolbar label select{min-width:0}}

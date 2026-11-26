@@ -1,23 +1,42 @@
-# Browser-Simulation · PIN-Version
+# LU-Alert Wio · Browser-Simulation RC8
 
 26. November 2026. Wio Tracker L1 Pro, 128 × 64 Pixel, 1024-Byte-Framebuffer.
 
-PASS: 1559 bestehende native/WASM-Vergleiche und 969 zusätzliche PIN-Pixelvergleiche. In 55 PIN-Funktionsgruppen wurden Einrichtung mit Wiederholung, führende Nullen, Abbrechen, falsche Codes und Wartezeit, Ändern/Entfernen mit altem Code, gesperrter Neustart, weiterlaufender RX und blockierter TX geprüft. Vergangene Ziffern sind maskiert; die aktuelle Ziffer bleibt zum Bearbeiten sichtbar.
+Die Browseransicht verwendet denselben C++-Simulator wie die native Mac-App.
+JavaScript reicht Eingaben weiter und zeichnet den Framebuffer. Es gibt keine
+Geräteverbindung, keinen echten Funkverkehr und keine JavaScript-Nachbildung
+der Nachrichtenfilter, Laufschrift oder PIN-Prüfung.
 
-Die Browseransicht kompiliert den gemeinsamen C++-Simulator. JavaScript liefert Eingaben und zeichnet den Framebuffer; es implementiert keine eigene PIN-Prüfung. Die Bridge gibt nur PIN-Aktivierung/Eingabestatus/Phase aus, keine Ziffern oder gespeicherten Prüfdaten. RESET erhält die PIN dieser Sitzung; Neuladen startet eine neue Sitzung ohne voreingestellten Code. Der WASM-Heap bleibt auf 16 MiB begrenzt.
+## Empfangskanäle und Quick TX
 
-Keine Geräteverbindung und kein echter Funkverkehr. Physische Tests der neuen PIN-Funktion stehen aus; keine Hardware wurde geflasht. Heltec bleibt ein eigener Vorschau-Simulator mit PRG-Eingabe.
+Zehn Kanalmenüs: #public, #test, #lu-alert, #trafic, #luxembourg, #hammradio,
+#bot, #emergency, #saarland und #trier. ENTER in der Inbox öffnet die echte
+C++-Kanalauswahl. Die Browserauswahl „RX-Kanal“ bedient denselben Filter und
+zeigt dessen Zustand. „Alle“ verwendet den vorhandenen RAM-Eingang.
 
+`?demo=channels` liefert acht lokale Beispielnachrichten. Die Filter #bot und
+#emergency bleiben darin ausdrücklich leer. Das Beispiel legt keine Kanäle
+an und sendet keine Funkpakete.
 
-## Wio-Laufschrift · 26. November 2026
+PASS: 33 zusätzliche native/WASM-Framebuffer-Vergleiche, 28 Funktionsgruppen.
+Geprüft wurden die zehn Kanäle, Alle/Einzelfilter, die physische
+ENTER-Auswahl, unveränderte RAM-Nachrichten sowie gesperrte Filter- und
+Demoaktionen. TX blieb null. Der bestehende Simulatorvergleich bestand mit
+1730 Framebuffer-Vergleichen und 149 Funktionsgruppen.
 
-Die Browser-Version enthält dieselbe C++-Laufschrift wie die Wio-Firmware.
-`?demo=scroll` und die Schaltflächen „Demo: lange Texte“ / „Langer Repeatername“
-zeigen ausdrücklich lokale Demodaten. Vier feste C++-Beispiele prüfen Nachricht,
-Nachrichten-Vorschau, Repeater- und Kontaktnamen, ohne echte Funkpakete.
+## PIN und Laufschrift
 
-72 zusätzliche native/WASM-Framebuffer-Vergleiche und 60 Funktionsgruppen bestanden:
-Anfangspause, Bewegung nach links, vollständiges Textende, Endpause, Wiederholung,
-Neustart nach Auswahl/Empfang sowie PIN, gesperrter Empfang und Reset.
-Die vorhandenen Wio-PIN- und Simulator-Regressionen bestanden ebenfalls.
-Heltec-Dateien einschließlich WebAssembly wurden nicht verändert.
+PASS: 969 PIN-Pixelvergleiche in 55 Funktionsgruppen; zusätzlich 72
+Laufschrift-Vergleiche in 60 Funktionsgruppen. Einrichtung, Wiederholung,
+Ändern/Entfernen, Fehlerwartezeit, gesperrter Neustart, weiterlaufender RX,
+blockierter TX und die Lesepausen/Bewegung/Endpause wurden geprüft.
+
+Die Bridge gibt keine PIN-Ziffern oder gespeicherten Prüfdaten aus. RESET
+behält die PIN der aktuellen Sitzung; Neuladen startet ohne voreingestellten
+Code. Der WASM-Heap bleibt auf 16 MiB begrenzt.
+
+## Grenzen
+
+Die neue Wio-Version ist nicht am echten Gerät geprüft; nichts wurde geflasht.
+Heltec bleibt eine separate Vorschau. Alle elf Dateien im veröffentlichten
+Heltec-Simulator wurden unverändert erhalten.

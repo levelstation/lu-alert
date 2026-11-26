@@ -30,9 +30,12 @@ void triple(Simulator& sim){sim.key(27);sim.advance(120);sim.key(27);sim.advance
 int page(const char* name){for(int i=0;i<Simulator::pageCount();++i)if(!strcmp(name,Simulator::pageName(i)))return i;throw std::runtime_error(std::string("Missing page: ")+name);}
 void openTx(Simulator& sim,unsigned channel,unsigned item){sim.goToPage(page("Messages"));sim.key(13);sim.key(13);for(unsigned i=0;i<channel;++i)sim.key(0xb6);sim.key(13);if(sim.quickPage()!=int(meshis::QuickTx::Page::Presets))return;for(unsigned i=0;i<item;++i)sim.key(0xb6);sim.key(13);}
 struct Backend {
-  char names[8][32]={};char prepared[32]={},sent[64]={};unsigned sends=0;bool fail=false;
+  char names[meshis::txChannelCount()][32]={};char prepared[32]={},sent[64]={};unsigned sends=0;bool fail=false;
   Backend(){for(unsigned i=0;i<meshis::txChannelCount();++i)snprintf(names[i],32,"%s",meshis::txChannel(meshis::txChannelCount()-1-i));}
   bool prepareNamed(const char* name){for(const auto& n:names)if(meshis::sameChannel(n,name)){snprintf(prepared,sizeof(prepared),"%s",n);return true;}return false;}
+#if defined(LU_ALERT_RX_CHANNELS)
+  bool rxChannelIdentity(const char* name,meshis::RxChannelIdentity& identity)const{identity={};for(unsigned i=0;i<meshis::txChannelCount();++i)if(meshis::sameChannel(name,names[i])){identity.valid=true;identity.bytes[0]=i+1;return true;}return false;}
+#endif
   void preparedName(char* out,size_t n){snprintf(out,n,"%s",prepared);}
   bool sendPreparedChannel(const char* text){if(fail || meshis::keyLock().blocks())return false;++sends;snprintf(sent,sizeof(sent),"%s",text);return true;}
   unsigned contactCount(){return 0;}void itemName(bool,unsigned,char* out,size_t n){snprintf(out,n,"DEMO");}
@@ -75,7 +78,11 @@ void modelTests(){using namespace meshis;
     tx.receive(txChannel(channel),"random","unrelated text",702);check(tx.page()==QuickTx::Page::Waiting,"Sender text cannot authenticate a reply");
     tx.receive(txChannel(0),"DEMO BOT","wrong channel",703,{true,true,true});check(tx.page()==QuickTx::Page::Waiting,"Wrong channel not correlated");
     tx.receive(txChannel(channel),"DEMO BOT","missing query evidence",704,{true,true,false});check(tx.page()==QuickTx::Page::Waiting,"No guessed query correlation");
-    tx.receive(txChannel(channel),"DEMO BOT","DEMO verified reply",705,{true,true,true});check(tx.page()==QuickTx::Page::Response,"Only sufficient transport evidence correlates");
+    tx.receive(txChannel(channel),"DEMO BOT","DEMO verified reply",705,{true,true,true}
+#if defined(LU_ALERT_RX_CHANNELS)
+    ,([&](){meshis::RxChannelIdentity identity;backend.rxChannelIdentity(txChannel(channel),identity);return identity;})()
+#endif
+    );check(tx.page()==QuickTx::Page::Response,"Only sufficient transport evidence correlates");
   }
   for(unsigned n=0;n<12;++n){char text[250];snprintf(text,sizeof(text),"PART %u: %0200u",n,n);tx.receive(txChannel(0),"DEMO NODE",text,800+n);}check(tx.count()==8&&tx.preview(0)->truncated,"Bounded multipart ring and visible truncation");
   keyLock()={};backend=Backend{};tx={};tx.open();tx.input(13,backend,0);tx.input(13,backend,0);tx.input(13,backend,0);tx.input(13,backend,0);keyLock().menuPress(100);tx.poll(backend,101);check(backend.sends==0&&tx.page()==QuickTx::Page::Failed,"Pending MENU cancels a not-yet-queued Quick TX");keyLock()={};

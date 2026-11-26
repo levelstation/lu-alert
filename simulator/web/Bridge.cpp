@@ -82,3 +82,12 @@ API void sim_scroll_demo(int view){sim().showTextScrollDemo(view);}
 
 API int sim_scroll_active(){return !Simulator::heltecPrg()&&meshis::textMarquee().active();}
 API uint32_t sim_scroll_read_ms(){return Simulator::heltecPrg()?0:meshis::textMarquee().readDurationMs();}
+
+// Local display/filter controls. No channel keys, identity tags, configuration or radio API.
+API int sim_rx_channel_count(){return Simulator::rxChannelCount();}
+API const char* sim_rx_channel_name(int index){return Simulator::rxChannelName(index);}
+API int sim_rx_filter(){return sim().rxFilter();}
+API int sim_rx_visible_count(){return sim().rxVisibleCount();}
+API int sim_rx_filter_available(){return sim().rxFilterAvailable();}
+API void sim_rx_set_filter(int filter){sim().setRxFilter(filter);}
+API void sim_rx_demo(){sim().showRxChannelsDemo();}

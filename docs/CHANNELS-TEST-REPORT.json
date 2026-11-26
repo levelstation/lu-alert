@@ -1,0 +1,157 @@
+{
+  "result": "PASS",
+  "target": "LU-Alert Wio RC8",
+  "core": {
+    "result": "PASS",
+    "profile": "Wio LU-Alert RC8",
+    "channels": [
+      "#public",
+      "#test",
+      "#lu-alert",
+      "#trafic",
+      "#luxembourg",
+      "#hammradio",
+      "#bot",
+      "#emergency",
+      "#saarland",
+      "#trier"
+    ],
+    "native_checks": {
+      "normal": 169,
+      "asan_ubsan": 169,
+      "actual_prepared_rx_callback": true,
+      "reversible_hook_apply_strip_roundtrip": "PASS",
+      "repeated_firmware_source_preparation": "PASS"
+    },
+    "host_quick_tx_bytes": 2456,
+    "max_quick_tx_bytes": 2560,
+    "ram_messages": 8,
+    "regression": {
+      "wio_text_scroll_checks": 132,
+      "wio_text_scroll_snapshots": 13,
+      "wio_pin_checks": 564,
+      "wio_pin_snapshots": 13,
+      "wio_live_radio_snapshots": 34,
+      "normal_native_build": "PASS"
+    },
+    "filter": "Private RAM-only SHA256-truncated channel-key identity plus received name snapshot; no tag/key output. All retains other configured channels. Selection does not mutate profiles or RF reception.",
+    "guards": [
+      "PIN/keylock blocks filter/demo input",
+      "configured unique names required for specific RX and TX channel",
+      "rekey/rename/duplicate names require reselection or show unavailable",
+      "TX revalidates actual name and key at enqueue",
+      "no automatic requests or retries",
+      "unknown bot command remains disabled"
+    ],
+    "heltec": "Existing eight-channel preview and current binaries untouched; Wio-LU compile guards only",
+    "device_access": false,
+    "hardware_flashed": false,
+    "physical_hardware_tests": "UNTESTED for this new RC8 build",
+    "identity_values_exported": false,
+    "simulator_tx_followup": {
+      "result": "PASS",
+      "normal_checks": 30,
+      "asan_ubsan_checks": 30,
+      "actual_Simulator_cpp": true,
+      "key_epoch_change_after_preview": "REJECTED",
+      "duplicate_alias_after_preview": "REJECTED",
+      "renamed_or_removed_after_preview": "REJECTED",
+      "unrelated_channel_identity_change": "ALLOWED",
+      "out_of_range_control": "IGNORED",
+      "device_access": false
+    },
+    "final_normal_mac_app": {
+      "bundle_version": "2026112608",
+      "executable_sha256": "6fb3a9c859b30eb36de6826fe808840a0605e0a50e6fe2beebda970085234d66",
+      "signed_and_verified": true
+    }
+  },
+  "browser": {
+    "result": "PASS",
+    "scope": "LU-Alert Wio shared C++ RX channel chooser and filter",
+    "channel_names": [
+      "#public",
+      "#test",
+      "#lu-alert",
+      "#trafic",
+      "#luxembourg",
+      "#hammradio",
+      "#bot",
+      "#emergency",
+      "#saarland",
+      "#trier"
+    ],
+    "channel_count": 10,
+    "native_wasm_framebuffer_comparisons": 33,
+    "functional_groups": 28,
+    "all_visible_count": 8,
+    "filter_counts": [
+      {
+        "name": "#public",
+        "count": 1
+      },
+      {
+        "name": "#test",
+        "count": 1
+      },
+      {
+        "name": "#lu-alert",
+        "count": 1
+      },
+      {
+        "name": "#trafic",
+        "count": 1
+      },
+      {
+        "name": "#luxembourg",
+        "count": 1
+      },
+      {
+        "name": "#hammradio",
+        "count": 1
+      },
+      {
+        "name": "#bot",
+        "count": 0
+      },
+      {
+        "name": "#emergency",
+        "count": 0
+      },
+      {
+        "name": "#saarland",
+        "count": 1
+      },
+      {
+        "name": "#trier",
+        "count": 1
+      }
+    ],
+    "device_access": false,
+    "hardware_flashed": false,
+    "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
+  },
+  "firmware": {
+    "result": "PASS",
+    "target": "Wio LU-Alert RC8",
+    "firmware_files": {
+      "LU-Alert-0.2-Wio-L1-Pro.uf2": {
+        "bytes": 944128,
+        "sha256": "ee7c8caf2dfb1a041c3745f1b4259dc947ffdeccbcc336177f9e6b94fef0c43b"
+      },
+      "LU-Alert-0.2-Wio-L1-Pro-DFU.zip": {
+        "bytes": 472639,
+        "sha256": "1099c15d40aa130d19c1f41760da69d2467e7fdac6c3f1ef6a5df87e6782d59c"
+      },
+      "LU-Alert-0.2-Wio-L1-Pro.bin": {
+        "bytes": 471836,
+        "sha256": "1c47b957b11c8507f7dee70045b87b47d60b2b90b075376c518d8ba53e9a1387"
+      }
+    },
+    "hardware_flashed": false
+  },
+  "official_source": "https://lu-alert.lu/de.html",
+  "community_project": true,
+  "hardware_flashed": false,
+  "physical_hardware_tests": "UNTESTED for RC8"
+}

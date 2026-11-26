@@ -11,10 +11,10 @@ const execute=promisify(execFile),root=resolve('.'),content=join(root,existsSync
 for(const project of ['meshis','lu-alert'])test(project+' scroll catalogue retains old IDs and exactly reuses Heltec',async()=>{
  const assets=await mkdtemp(join(tmpdir(),'scroll-catalog-'));
  try{
-  const title=project==='meshis'?'Meshis':'LU-Alert',rc=project==='meshis'?'RC8':'RC7',pin=project==='meshis'?'RC7':'RC6';
-  await mkdir(join(assets,'downloads/text-scroll'),{recursive:true});await mkdir(join(assets,'downloads/pin'));await mkdir(join(assets,'data'));
-  const newNames=[`${title}-Wio-Laufschrift-${rc}-DFU.zip`,`${title}-Wio-Laufschrift-${rc}.bin`,`${title}-Wio-Laufschrift-${rc}.uf2`,`${title}-Wio-Laufschrift-${rc}-macOS-arm64.zip`,`${title}-Wio-Laufschrift-Source.zip`];
-  for(const name of newNames)await writeFile(join(assets,'downloads/text-scroll',name),'fixture '+name);
+  const channels=project==='lu-alert',title=channels?'LU-Alert':'Meshis',rc='RC8',pin=project==='meshis'?'RC7':'RC6',folder=channels?'channels':'text-scroll',releaseName=channels?'Kanalauswahl':'Laufschrift';
+  await mkdir(join(assets,'downloads',folder),{recursive:true});await mkdir(join(assets,'downloads/pin'));await mkdir(join(assets,'data'));
+  const newNames=[`${title}-Wio-${releaseName}-${rc}-DFU.zip`,`${title}-Wio-${releaseName}-${rc}.bin`,`${title}-Wio-${releaseName}-${rc}.uf2`,`${title}-Wio-${releaseName}-${rc}-macOS-arm64.zip`,`${title}-Wio-${releaseName}-Source.zip`];
+  for(const name of newNames)await writeFile(join(assets,'downloads',folder,name),'fixture '+name);
   const old=[];
   async function oldFile(id,path,board,kind,version,format){const body='immutable '+path;await writeFile(join(assets,path),body);const row={id,path,board,kind,version,format,title:'Existing '+board,bytes:Buffer.byteLength(body),sha256:sha(body),url:'/get/'+id,current:true,preview:true};old.push(row);return row;}
   for(const [suffix,format] of [['-DFU.zip','DFU ZIP'],['.bin','BIN'],['.uf2','UF2'],['-macOS-arm64.zip','macOS ZIP']])await oldFile('wio-'+pin.toLowerCase()+'-'+({'DFU ZIP':'dfu','BIN':'bin','UF2':'uf2','macOS ZIP':'macos'}[format]),`/downloads/pin/${title}-Wio-PIN-${pin}${suffix}`,'wio',format==='macOS ZIP'?'simulator':'firmware',pin,format);
@@ -27,7 +27,7 @@ for(const project of ['meshis','lu-alert'])test(project+' scroll catalogue retai
   assert.equal(catalog.releases.length,8);assert.equal(catalog.legacy.length,6);
   const all=new Map([...catalog.releases,...catalog.legacy].map(r=>[r.id,r]));
   for(const row of old)assert.deepEqual(all.get(row.id),{...row,current:row.board==='heltec'});
-  assert.ok(catalog.releases.find(r=>r.id==='source-wio-scroll'&&r.version===rc));
+  assert.ok(catalog.releases.find(r=>r.id===(channels?'source-wio-channels':'source-wio-scroll')&&r.version===rc));
   assert.equal(catalog.releases.filter(r=>r.board==='heltec').length,3);
   const once=await readFile(join(assets,'data/download-catalog.json'),'utf8');await execute(process.execPath,[join(root,'website/catalog.mjs'),assets,project]);
   assert.equal(await readFile(join(assets,'data/download-catalog.json'),'utf8'),once,'Generating twice keeps identities stable');
@@ -36,17 +36,17 @@ for(const project of ['meshis','lu-alert'])test(project+' scroll catalogue retai
   assert.equal(await readFile(join(assets,'data/download-catalog.json'),'utf8'),once,'Reject existing current Heltec changes before writing');
  }finally{await rm(assets,{recursive:true,force:true});}
 });
-test('real scroll download files, cards and current versions agree',{skip:!existsSync(join(content,'downloads/text-scroll'))},async()=>{
+test('real scroll download files, cards and current versions agree',{skip:!existsSync(join(content,'downloads',JSON.parse(await readFile(join(content,'data/download-catalog.json'),'utf8')).project==='lu-alert'?'channels':'text-scroll'))},async()=>{
  const catalog=JSON.parse(await readFile(join(content,'data/download-catalog.json'),'utf8'));
  const html=await readFile(join(content,'downloads/index.html'),'utf8'),homepage=await readFile(join(content,'index.html'),'utf8');
- assert.equal(catalog.releases.length,8);assert.equal(catalog.legacy.length,23);
+ assert.equal(catalog.releases.length,8);assert.equal(catalog.legacy.length,catalog.project==='lu-alert'?28:23);
  for(const r of [...catalog.releases,...catalog.legacy]){const bytes=await readFile(join(content,r.path));assert.equal(bytes.length,r.bytes,r.id);assert.equal(sha(bytes),r.sha256,r.id);assert.ok(html.includes(`href="${r.url}"`),r.id+' needs a no-JavaScript link');}
  for(const r of catalog.releases){assert.ok(html.includes(`data-release-id="${r.id}"`));assert.ok(r.preview);assert.ok(html.includes(r.sha256));}
- const baseline=join(root,'../../build/text-scroll-publish/'+catalog.project+'-baseline.json');
+ const baseline=catalog.project==='lu-alert'?join(root,'../../build/lu-channels/baseline.json'):join(root,'../../build/text-scroll-publish/'+catalog.project+'-baseline.json');
  if(existsSync(baseline)){const before=JSON.parse(await readFile(baseline,'utf8')).catalog,all=new Map([...catalog.releases,...catalog.legacy].map(r=>[r.id,r]));for(const r of [...before.releases,...before.legacy])assert.deepEqual(all.get(r.id),{...r,current:r.board==='heltec'&&r.id.startsWith('heltec-dev4-')});}
  assert.equal(catalog.releases.filter(r=>r.board==='heltec'&&r.kind==='firmware').length,2);
  assert.match(html,/Nur Anwendung · kein vollständiges Erstinstallationspaket/);assert.match(html,/dev4 · R2 · Vorschau/);assert.match(html,/dev4 · R8 · Vorschau/);
- assert.match(html,/Laufschrift/);assert.match(html,/downloads\/text-scroll\/SHA256SUMS/);assert.match(html,/TEXT-SCROLL\.md/);
+ assert.match(html,/Laufschrift/);assert.match(html,catalog.project==='lu-alert'?/downloads\/channels\/SHA256SUMS/:/downloads\/text-scroll\/SHA256SUMS/);assert.match(html,/TEXT-SCROLL\.md/);
  assert.match(homepage,/simulator\/\?demo=scroll/);assert.match(homepage,/Bildschirmsperre/);assert.match(homepage,/simulator\/heltec\/\?demo=pin/);assert.match(homepage,/https:\/\/www.nosrv.eu\/newsletter\//);
- assert.match(html,/downloads\.mjs\?v=text-scroll-20261126/);
+ assert.match(html,/downloads\.mjs\?v=lu-channels-20261126/);
 });

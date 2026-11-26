@@ -33,6 +33,9 @@ std::string argumentPreview(Simulator& s,const meshis::TxPreset& item){
 }
 struct FakeQueue {
  unsigned contactCount(){return 0;}
+#if defined(LU_ALERT_RX_CHANNELS)
+ bool rxChannelIdentity(const char*,meshis::RxChannelIdentity& identity)const{identity={};return false;}
+#endif
  unsigned sends=0;char prepared[32]={},sent[64]={};bool fail=false;
  bool prepareNamed(const char* name){snprintf(prepared,sizeof(prepared),"%s",name);return true;}
  void preparedName(char* out,size_t cap){snprintf(out,cap,"%s",prepared);}

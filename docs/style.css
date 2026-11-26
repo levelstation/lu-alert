@@ -33,3 +33,17 @@
 .scroll-showcase figcaption{margin-top:15px;color:var(--scroll-muted);font-size:14px;line-height:1.6}
 .scroll-feature-caption{color:var(--scroll-muted);font-size:14px;line-height:1.6;margin:20px 0 0}
 @media(max-width:800px){.scroll-feature{padding:54px 0}.scroll-feature-heading{grid-template-columns:minmax(0,1fr);gap:24px;margin-bottom:26px}.scroll-feature-copy>p:first-child{font-size:16px}.scroll-showcase{grid-template-columns:minmax(0,1fr);gap:18px}.scroll-showcase figure{padding:15px}.scroll-screen-label{flex-wrap:wrap;gap:5px 12px;margin-bottom:13px}.scroll-feature-actions{gap:10px 18px}}
+
+/* Keep the community project clearly distinct from the official warning app. */
+.project-brand{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05;white-space:nowrap}
+.project-brand>.brand-name{color:#edf4f8!important}
+.project-brand .brand-name>span:first-child{color:#fb6069}
+.project-brand>.brand-subtitle{color:#bdcad4;font-size:14px;font-weight:600;letter-spacing:.3px;margin-top:7px}
+.community-notice{padding:20px 24px;margin-top:26px;background:#172534;border:1px solid #546372;border-left:4px solid #fb7a82;border-radius:9px}
+.community-notice p{font-size:15px;line-height:1.65;margin:0;color:#c8d4de}
+.community-notice p+p{margin-top:8px}
+.community-notice strong{color:#f2f6fa;font-weight:650}
+.community-notice a{color:#a7e0e9;text-underline-offset:3px}
+@media(max-width:800px){.community-notice{padding:17px 18px;margin-top:20px}.community-notice p{font-size:14px}.project-brand{font-size:27px}}
+
+.channel-previews{display:grid;gap:28px;min-width:0}.rx-picker-preview{width:100%;max-width:384px}.rx-picker-preview figcaption strong{color:#e8f3f8;font-weight:650}

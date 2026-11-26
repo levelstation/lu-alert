@@ -7,6 +7,8 @@ if not upstream.exists():
  subprocess.run(['git','clone','https://github.com/meshcore-dev/MeshCore.git',str(upstream)],check=True)
  subprocess.run(['git','-C',str(upstream),'checkout','--detach',PIN],check=True)
 assert subprocess.check_output(['git','-C',str(upstream),'rev-parse','HEAD'],text=True).strip()==PIN,'Different checkout: preserve it and prepare a separate pinned source folder.'
+rx_ui=ROOT/'tools/setup_rx_channels_ui.py'
+if rx_ui.exists():subprocess.run(['python3',str(rx_ui),'strip'],check=True)
 scroll_ui=ROOT/'tools/setup_text_scroll_ui.py'
 if scroll_ui.exists():subprocess.run(['python3',str(scroll_ui),'strip'],check=True)
 pin_ui=ROOT/'tools/setup_screen_pin_ui.py'
@@ -57,7 +59,7 @@ build_flags = ${env:WioTrackerL1_companion_radio_ble.build_flags}
   "-ffile-prefix-map=@BUILD_HOME@=/build-user"
   "-fdebug-prefix-map=@BUILD_HOME@=/build-user"
   -D LU_ALERT_BRANDING=1
-  -D FIRMWARE_VERSION='"v0.2.0-lu-alert-rc7"'
+  -D FIRMWARE_VERSION='"v0.2.0-lu-alert-rc8"'
   -D FIRMWARE_BUILD_DATE='"26 Nov 2026"'
 '''
 config=config.replace('@BUILD_HOME@',str(Path.home()))
@@ -67,4 +69,5 @@ if target.exists() and target.read_text()!=config:
 target.write_text(config)
 if pin_ui.exists():subprocess.run(['python3',str(pin_ui),'apply'],check=True)
 if scroll_ui.exists():subprocess.run(['python3',str(scroll_ui),'apply'],check=True)
+if rx_ui.exists():subprocess.run(['python3',str(rx_ui),'apply'],check=True)
 print('PASS: pinned application sources and shared UI prepared. No device access, upload, reset, erase or key changes.')

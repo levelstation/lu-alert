@@ -6,5 +6,5 @@
   "pin_value_exports": false,
   "device_access": false,
   "fixed_wasm_heap": 16777216,
-  "wasm_sha256": "7db7454fc4c1046d83898ea58f1eda42d44219c81250b0b337392fb27a8250ed"
+  "wasm_sha256": "dda8bbf2e3552c109ebbe31e9a0fcc2eb15b8f586354fb86bd2cf9222a277d6b"
 }
