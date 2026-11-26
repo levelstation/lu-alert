@@ -1,6 +1,6 @@
 {
   "result": "PASS",
-  "native_wasm_comparisons": 10450,
+  "native_wasm_comparisons": 10524,
   "framebuffer_bytes": 1024,
   "fixed_wasm_heap": 16777216,
   "device_access": false,

@@ -1,0 +1,10 @@
+{
+  "result": "PASS",
+  "hardware_input": "Wio joystick/MENU",
+  "native_wasm_pixel_comparisons": 969,
+  "functional_groups": 55,
+  "pin_value_exports": false,
+  "device_access": false,
+  "fixed_wasm_heap": 16777216,
+  "wasm_sha256": "37b6fb6a745b24d0172a6a16d2c7d862eb2478972fa8dcd4a49c00b04ac92193"
+}

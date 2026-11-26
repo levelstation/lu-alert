@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0-heltec-dev3",
+  "version": "0.2.0-heltec-dev4",
   "status": "PREVIEW",
   "input": "raw PRG levels; gestures resolved by shared C++ PrgInput",
   "format": "Shared C++ simulator compiled to WebAssembly",
@@ -10,41 +10,29 @@
     1
   ],
   "device_access": false,
+  "screen_pin": true,
+  "pin_persistence": "current browser session only",
   "hardware_tests": "UNTESTED",
   "physical_revision": "UNKNOWN",
   "bootloader_compatibility": "UNKNOWN",
   "files": {
-    "core.mjs": "de0053b815c41ce86ea7f5b65507bd2387eee887cf3db4bd5a620be7cee920e5",
-    "core.wasm": "dae69fe3410e83c83a17c60487e3a6efef9fd153731ff7d651e769f2ce2341a7"
-  },
-  "shared_sources": {
-    "firmware/core/ActiveDiscovery.h": "d66c907a7eed47ecc1c4083e656d2c134442a1c210e9966a7676863721081820",
-    "firmware/core/DiscoveryReply.h": "6221697f40fcf00a3fd7b1d3cd3f8bf785f5f5cb332962bc256e12451f743821",
-    "firmware/core/RuntimeTelemetry.h": "c3466d44d702b4d997e0a816ee15e4018797f1733e88ce3868c40cfb33227720",
-    "firmware/ui/FirmwareScreens.h": "85bb3b46caac9f6380d90b80f1cc35317a33d45126d0f9dc18df197bc63df1e2",
-    "simulator/src/Simulator.cpp": "54721966181f5b9cf18ace9bca3b983917983f047e9cb07923d30cc12ff242cb"
-  },
-  "native_wasm_tests": {
-    "result": "PASS",
-    "native_wasm_comparisons": 10450,
-    "framebuffer_bytes": 1024,
-    "fixed_wasm_heap": 16777216,
-    "device_access": false,
-    "hardware": "UNTESTED"
+    "core.mjs": "15ac6b734fa212083e15564ce9ccb81e1f483f026610b9233217a7eeafb1390d",
+    "core.wasm": "043e5ead6dfaad7c4a0fe4c2c627c2562f451514e7b3dbabe7a88e73b9f0565b"
   },
   "source_bundle_headers": {
     "firmware/core/ActiveDiscovery.h": "d66c907a7eed47ecc1c4083e656d2c134442a1c210e9966a7676863721081820",
     "firmware/core/DiscoveryQueueGuard.h": "dcb1ffce8a2e22d9218fc8665ce68f3bf47dcd93e462aba35c2f2430c6153259",
     "firmware/core/DiscoveryReply.h": "6221697f40fcf00a3fd7b1d3cd3f8bf785f5f5cb332962bc256e12451f743821",
     "firmware/core/GpsCourse.h": "02ec54d8d834f3bd03219692f00a6f81eb17e4f3b6a88ab18de2a8ef0c777142",
-    "firmware/core/KeyLock.h": "22ed439e0b8d9152f9c9d0103f6751027119c0354d3475782b297ee18cac4819",
+    "firmware/core/KeyLock.h": "8e82cca6f3f342e6391cbc9b623c8cb198783b38d65ac45071e464c74b8e73de",
     "firmware/core/MeshCoreDiscovery.h": "3b31865fb6d277dfba9c6773d6ea624ee393c7dd998293237300e98ee98fbc5a",
     "firmware/core/Meshis.h": "04781a23af72d583752028567c315653cafeffdd77390257c049f09682d41eef",
-    "firmware/core/PrgInput.h": "54fc9d0b3e58c21651237a6a0fdf9a721d9665f9e2e7b3143bbd87bb63990499",
+    "firmware/core/PrgInput.h": "5c4ef08927adf1f9f803cc0b2ae77af0b5bfe4b45ffe6a58dc06b16493b06114",
     "firmware/core/RuntimeTelemetry.h": "c3466d44d702b4d997e0a816ee15e4018797f1733e88ce3868c40cfb33227720",
+    "firmware/core/ScreenPin.h": "56482a38c9237e267bf68bc5c2f74259ffb6008ca99f6f63d834deabfb0acddb",
     "firmware/ui/Branding.h": "80b4a60c1586d28ffc253bfa59c923aef244b67d9331845bf8c961e1ef07bc21",
-    "firmware/ui/FirmwareScreens.h": "85bb3b46caac9f6380d90b80f1cc35317a33d45126d0f9dc18df197bc63df1e2",
-    "firmware/ui/LockRenderer.h": "67a1e23fb5dcb048b3f29d94d848c1a46540a1645d9673acd64004f5dc2028ea",
+    "firmware/ui/FirmwareScreens.h": "afe2747c0ac328d97566eaa089589fb5b568954b5a213a2e9a888dcdb244daa2",
+    "firmware/ui/LockRenderer.h": "07a0ee1bebadfff8bb079e5cc593e83c470b96ade394111a2c959b319996ee0d",
     "firmware/ui/LuAlert.h": "2382ef8545a67897b0a9983632005c3973237458c7287b961289802c045f088a",
     "firmware/ui/LuAlertBitmap.h": "70ae98bd6d2d42f21961c1496bf30ffeb9dc10c2da044c254b2d6e99d16cd810",
     "firmware/ui/MenuActions.h": "962e9fa6a4037136f7aa9b8af3917041a4de7c841379c32572c475e5552b480f",
@@ -55,14 +43,43 @@
     "firmware/ui/NuxRenderer.h": "0815892b494b3e7295167ee68bedce341194cb1f1b5e319054992bb3f1683892",
     "firmware/ui/OledText.h": "5c0b83fb5aee1075fd4da2dbf47e1af528fad723814ff5207c18138e292d2053",
     "firmware/ui/QuickTx.h": "0118d65d4599b42ef7ca6e3bf94398ad840fd80833eaa1630ca2df3524026af0",
+    "firmware/ui/ScreenPinRenderer.h": "10c1de33d37078d0f6ea7f9556c58a37373de1320f4c29e2c59481e032358f51",
     "firmware/ui/TxProfile.h": "24ed1bbe268400c6c33a1016f4d810aa1b2700088891485d308abc4dc5bbf223",
     "firmware/ui/UiInputHints.h": "a8b00c644257485a93e234245f54deb19424a23869769fccb49808b9a9b4b2d3",
     "firmware/display/FramebufferDisplay.h": "30904f4e0cfc9863451f071ca1520e57585ad88fe61f0cb9ab2c6e295b1622a9",
     "firmware/display/SH1106Framebuffer.h": "52c06c303b5e1721924b6dedf421868eb067ff2d89456aa985a088cb2cdc076b",
-    "firmware/display/SSD1315FramebufferDisplay.h": "ec0f2030a212d53a1bd5a5c503445eb2207290a1a656eb74de9ccef6fdbcdc88"
+    "firmware/display/SSD1315FramebufferDisplay.h": "ec0f2030a212d53a1bd5a5c503445eb2207290a1a656eb74de9ccef6fdbcdc88",
+    "simulator/src/Simulator.cpp": "ba794387821ab173ee4b9cc891a25be5b1fa73991d2f6a39b0611094e3db9d43",
+    "simulator/src/FirmwareAdapter.h": "cb699de413c5acb04e256bb8a7d6c2b8cd0aff94a456d0ac40a17fd855f7ad48",
+    "simulator/web/Bridge.cpp": "ca0ed7e18f2a0e41281733ddbc4f348aabc70582ef9320458becf52ad2dbc2fc"
+  },
+  "shared_sources": {
+    "firmware/core/ActiveDiscovery.h": "d66c907a7eed47ecc1c4083e656d2c134442a1c210e9966a7676863721081820",
+    "firmware/core/DiscoveryReply.h": "6221697f40fcf00a3fd7b1d3cd3f8bf785f5f5cb332962bc256e12451f743821",
+    "firmware/core/RuntimeTelemetry.h": "c3466d44d702b4d997e0a816ee15e4018797f1733e88ce3868c40cfb33227720",
+    "firmware/ui/FirmwareScreens.h": "afe2747c0ac328d97566eaa089589fb5b568954b5a213a2e9a888dcdb244daa2",
+    "simulator/src/Simulator.cpp": "ba794387821ab173ee4b9cc891a25be5b1fa73991d2f6a39b0611094e3db9d43"
   },
   "hardware_boundary_sources": {
     "firmware/core/MeshCoreDiscovery.h": "3b31865fb6d277dfba9c6773d6ea624ee393c7dd998293237300e98ee98fbc5a",
     "firmware/core/DiscoveryQueueGuard.h": "dcb1ffce8a2e22d9218fc8665ce68f3bf47dcd93e462aba35c2f2430c6153259"
+  },
+  "native_wasm_tests": {
+    "result": "PASS",
+    "native_wasm_comparisons": 10524,
+    "framebuffer_bytes": 1024,
+    "fixed_wasm_heap": 16777216,
+    "device_access": false,
+    "hardware": "UNTESTED"
+  },
+  "pin_tests": {
+    "result": "PASS",
+    "hardware_input": "Heltec PRG",
+    "native_wasm_pixel_comparisons": 2257,
+    "functional_groups": 55,
+    "pin_value_exports": false,
+    "device_access": false,
+    "fixed_wasm_heap": 16777216,
+    "wasm_sha256": "043e5ead6dfaad7c4a0fe4c2c627c2562f451514e7b3dbabe7a88e73b9f0565b"
   }
 }

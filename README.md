@@ -1,5 +1,7 @@
 # LU-Alert · MeshCore Luxembourg
 
+**Neu: vierstellige Bildschirm-PIN für Wio und Heltec.** Menü → Bildschirmsperre → PIN erstellen. Ändern/Entfernen mit bisherigem Code; Neustart erhält die Sperre. [Bedienung und Tests](docs/SCREEN-PIN.md). v0.2.0-lu-alert-rc6 / Heltec dev4; neue PIN-Hardwaretests ausstehend.
+
 **Aktiver Zero-Hop-Scan: Wio RC5 / Heltec dev3 (Vorschau).** [Direkt ausprobieren](https://lu-alert.nosrv.eu/simulator/?demo=scan) · [Bedienung und Airtime](docs/DISCOVERY.md). Expliziter Start, mindestens 30–35 Sekunden, höchstens zwei Minuten; neue Hardwaretests UNTESTED.
 
 **Neu: Wio RC4 / Heltec dev2 – Funkmonitor-Vorschau.** [Repeater live direkt öffnen](https://lu-alert.nosrv.eu/simulator/?demo=repeaters) · [Pegel / Rauschen](https://lu-alert.nosrv.eu/simulator/?demo=noise) · [Bedienung](docs/RADIO-LIVE.md).
@@ -20,6 +22,12 @@
 Die Schreibweise #saarloorlux entspricht dem Auftrag. Sie muss dem tatsächlich konfigurierten Kanalnamen entsprechen; keine stille Umleitung auf einen anderen Namen oder Index. Der produktive Bot-Parser liegt nicht vor. Es werden keine Kommandos erfunden und keine Serveränderungen vorgenommen. Acht Einträge werden auf zwei Seiten angezeigt. Die Tastensperre zeigt nur Titel und Pixel-Schloss.
 
 [Website](https://lu-alert.nosrv.eu) · [GitHub](https://github.com/levelstation/lu-alert) · [Testbericht](TEST-REPORT.md) · [Heltec-Roadmap](docs/ROADMAP.md)
+
+## Vierstellige Bildschirm-PIN
+
+Menü → **Bildschirmsperre** → **PIN erstellen**. Vier Ziffern wählen und wiederholen; zum Ändern oder Entfernen den bisherigen Code eingeben. Auf dem Wio werden Joystick und ENTER benutzt, auf dem Heltec kurze und längere PRG-Tastendrücke. Ein Neustart erhält die gespeicherte Sperre.
+
+[PIN-Downloads und Mac-Simulatoren](docs/downloads/pin/) · [Bedienung](docs/SCREEN-PIN.md) · [Softwareprüfungen](docs/SCREEN-PIN-TEST-REPORT.json). Wio: **v0.2.0-lu-alert-rc6**. Heltec: **dev4 · Vorschau**, R2/R8; physische Tests der neuen PIN-Funktion stehen aus. Vorherige Downloads bleiben erhalten.
 
 ## Technik und Grenzen
 

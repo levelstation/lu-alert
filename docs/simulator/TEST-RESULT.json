@@ -1,7 +1,7 @@
 {
   "result": "PASS",
-  "native_wasm_framebuffer_comparisons": 1498,
-  "functional_assertion_groups": 124,
+  "native_wasm_framebuffer_comparisons": 1559,
+  "functional_assertion_groups": 125,
   "pages": [
     "Home",
     "Timezone",
@@ -9,6 +9,7 @@
     "Pegel / Rauschen",
     "Repeater live",
     "Sound",
+    "Bildschirmsperre",
     "GPS Course",
     "Diagnostics",
     "Messages",
@@ -25,5 +26,5 @@
   "wasm_memory_bytes": 16777216,
   "hardware_tests": "UNTESTED",
   "device_access": false,
-  "wasm_sha256": "29d0cd6dfa3c77127e4ff9d99eda6cf9743deca0d7adef6dcf53dab9ad2f828e"
+  "wasm_sha256": "37b6fb6a745b24d0172a6a16d2c7d862eb2478972fa8dcd4a49c00b04ac92193"
 }

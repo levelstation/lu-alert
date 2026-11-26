@@ -1,5 +1,9 @@
 # LU-Alert Changelog
 
+## 26. November 2026 · Bildschirm-PIN
+
+v0.2.0-lu-alert-rc6 / Heltec dev4 (Vorschau): optionale vierstellige PIN im Menü erstellen, ändern und entfernen. Gemeinsamer C++-Code für Wio, Heltec und die Simulation; maskierte Eingabe, erneute Bestätigung, Wartezeit nach Fehlversuchen, Neustart-Sperre und überprüfte Speicherung mit Fehler-Rücknahme. Bestehende Tasten-, Empfangs- und Kanalprofile bleiben erhalten.
+
 ## Websimulation zur 0.2 RC3 · 2026-11-22
 
 Firmware und native RC3-App bleiben bytegleich erhalten. Bedienbare WebAssembly-Simulation mit gemeinsamem C++-Code, 1272 nativen/WASM-Pixelvergleichen und Browserprüfung. Keine Geräteoperationen.

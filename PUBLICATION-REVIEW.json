@@ -1,13 +1,16 @@
 {
-  "date": "2026-11-23",
-  "scope": "central NOSRV newsletter links and concise visitor copy",
+  "date": "2026-11-26",
+  "scope": "four-digit screen PIN, browser simulators and versioned preview downloads",
   "known_personal_markers": 0,
   "protocol_changed": false,
-  "firmware_and_wasm": "UNCHANGED",
-  "old_downloads": "UNCHANGED",
+  "old_downloads": "RETAINED",
   "new_hardware_tests": "UNTESTED",
-  "browser_visual_qa": "NOT_RUN",
   "hardware_flashed": false,
-  "newsletter": "CENTRAL_NOSRV_PREPARED_DISABLED",
-  "source_sha256sums": "8803e00dd1ef3ae786789754370e05327d7c9b8e1aea88ba96607219fa7150a9"
+  "pin_default": "DISABLED; no preconfigured code",
+  "pin_storage": "salted verifier; separate from BLE PIN",
+  "heltec": "PREVIEW",
+  "source_sha256sums": "16a988b0a78088acc953d9aeaa8fc7fda08a721a33c309d2661f6de436da63ca",
+  "browser_pin_test": "PASS Wio and Heltec; native/WASM pixel parity",
+  "source_archive_scope": "firmware and simulator only; website/environment files excluded",
+  "source_archive_privacy": "PASS zero findings"
 }
